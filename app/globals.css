@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-accent: #ff5a00;
+  --color-accent-dim: #b23f00;
+  --color-black: #0d0d0d;
+  --color-charcoal: #2a2a2a;
+  --color-mist: #f2f2f2;
+
+  --background: var(--color-black);
+  --foreground: var(--color-mist);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--color-accent);
+  --color-accent-dim: var(--color-accent-dim);
+  --color-black: var(--color-black);
+  --color-charcoal: var(--color-charcoal);
+  --color-mist: var(--color-mist);
+  --font-display: var(--font-exo);
+  --font-sans: var(--font-inter);
+  --animate-orbit-spin: orbit-spin 16s linear infinite;
+  --animate-drift: drift 8s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.8s ease forwards;
+  --animate-bar-pulse: bar-pulse 1.3s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes bar-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.6);
   }
+  50% {
+    transform: scaleY(1.4);
+  }
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-14px) translateX(6px);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-black);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-black);
+}
+
+/* Glassmorphism surface — plain translucency, no backdrop-filter (kept cheap: this
+   class is used on dozens of cards, and backdrop-filter compounds badly at that scale) */
+.glass {
+  background: rgba(242, 242, 242, 0.045);
+  border: 1px solid rgba(242, 242, 242, 0.08);
+}
+
+/* Reserved for a handful of key surfaces (nav, modals, feature panels) where the blur cost is worth it */
+.glass-strong {
+  background: rgba(42, 42, 42, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(242, 242, 242, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #f2f2f2 55%, #ff5a00 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accent-glow {
+  box-shadow: 0 0 0 1px rgba(255, 90, 0, 0.25), 0 20px 60px -20px rgba(255, 90, 0, 0.45);
+}
+
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(242, 242, 242, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 242, 242, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.noise-mask {
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
