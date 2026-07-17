@@ -33,9 +33,11 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
-        scrolled || open
-          ? "glass-strong border-mist/10"
-          : "border-transparent bg-transparent"
+        scrolled
+          ? "border-mist/10 bg-[#000000]"
+          : open
+            ? "glass-strong border-mist/10"
+            : "border-transparent bg-transparent"
       }`}
     >
       <nav
