@@ -62,7 +62,7 @@ export default function PlatformContent() {
               <motion.div
                 key={h.title}
                 variants={staggerItem}
-                className="group rounded-2xl glass p-6 transition-all hover:-translate-y-1 hover:border-accent/40"
+                className="group rounded-2xl glass p-6 card-lift"
               >
                 <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-black">
                   <Icon name={h.icon} size={20} />

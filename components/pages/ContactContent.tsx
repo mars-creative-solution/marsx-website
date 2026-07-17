@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Phone, MapPin, Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
-import { fadeUp, inView } from "@/lib/motion";
+import { EASE, fadeUp, inView } from "@/lib/motion";
 import { SITE } from "@/lib/content";
 import { INTEREST_OPTIONS } from "@/lib/contact";
 import OrbitLogo from "../OrbitLogo";
@@ -118,16 +118,37 @@ export default function ContactContent() {
             className="rounded-3xl glass-strong p-8 lg:col-span-7"
           >
             {status === "success" ? (
-              <div className="flex h-full min-h-[380px] flex-col items-center justify-center text-center">
-                <CheckCircle2 size={48} className="text-accent" />
-                <h3 className="mt-6 font-display text-xl font-semibold text-mist">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+                className="flex h-full min-h-[380px] flex-col items-center justify-center text-center"
+              >
+                <motion.div
+                  initial={{ scale: 0.6, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.05 }}
+                >
+                  <CheckCircle2 size={48} className="text-accent" />
+                </motion.div>
+                <motion.h3
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.18, duration: 0.4 }}
+                  className="mt-6 font-display text-xl font-semibold text-mist"
+                >
                   Message received
-                </h3>
-                <p className="mt-2 max-w-sm text-sm text-mist/55">
+                </motion.h3>
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.26, duration: 0.4 }}
+                  className="mt-2 max-w-sm text-sm text-mist/55"
+                >
                   Thanks for reaching out. Our team will get back to you shortly
                   at the email you provided.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -186,16 +207,24 @@ export default function ContactContent() {
                   />
                 </div>
 
-                {status === "error" && errors.length > 0 && (
-                  <div className="flex items-start gap-2 rounded-xl border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-mist/80">
-                    <AlertCircle size={16} className="mt-0.5 shrink-0 text-accent" />
-                    <ul className="space-y-0.5">
-                      {errors.map((err) => (
-                        <li key={err}>{err}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <AnimatePresence>
+                  {status === "error" && errors.length > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.3, ease: EASE }}
+                      className="flex items-start gap-2 rounded-xl border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-mist/80"
+                    >
+                      <AlertCircle size={16} className="mt-0.5 shrink-0 text-accent" />
+                      <ul className="space-y-0.5">
+                        {errors.map((err) => (
+                          <li key={err}>{err}</li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <button
                   type="submit"

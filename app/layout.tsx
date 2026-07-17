@@ -3,6 +3,7 @@ import { Exo_2, Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import MotionProvider from "@/components/MotionProvider";
 
 const exo2 = Exo_2({
   variable: "--font-exo",
@@ -69,9 +70,11 @@ export default function RootLayout({
       className={`${exo2.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-mist overflow-x-hidden">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <MotionProvider>
+          <Nav />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </MotionProvider>
       </body>
     </html>
   );

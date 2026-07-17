@@ -27,7 +27,7 @@ export default function IndustriesGrid({ variant = "full" }: IndustriesGridProps
         <motion.div
           key={industry.name}
           variants={staggerItem}
-          className={`group rounded-2xl glass transition-all hover:-translate-y-1 hover:border-accent/40 ${
+          className={`group rounded-2xl glass card-lift ${
             variant === "compact"
               ? "flex flex-col items-center gap-3 p-5 text-center"
               : "p-7"

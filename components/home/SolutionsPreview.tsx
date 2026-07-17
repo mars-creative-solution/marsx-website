@@ -39,7 +39,7 @@ export default function SolutionsPreview() {
             <motion.div
               key={s.slug}
               variants={staggerItem}
-              className="group relative overflow-hidden rounded-2xl glass p-8 transition-all hover:-translate-y-1 hover:border-accent/40"
+              className="group relative overflow-hidden rounded-2xl glass p-8 card-lift"
             >
               <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent/0 blur-2xl transition-colors duration-500 group-hover:bg-accent/20" />
               <div className="relative mb-6 grid h-12 w-12 place-items-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-black">

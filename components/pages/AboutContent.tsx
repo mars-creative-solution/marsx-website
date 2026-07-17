@@ -122,7 +122,7 @@ export default function AboutContent() {
               <motion.div
                 key={pillar.title}
                 variants={staggerItem}
-                className="group rounded-2xl glass p-6 transition-colors hover:border-accent/40"
+                className="group rounded-2xl glass p-6 card-lift"
               >
                 <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-black">
                   <Icon name={pillar.icon} size={20} />

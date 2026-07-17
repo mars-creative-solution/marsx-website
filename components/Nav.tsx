@@ -61,16 +61,18 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`relative text-[0.9rem] font-medium tracking-tight transition-colors ${
+              className={`group relative rounded-sm text-[0.9rem] font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-4 focus-visible:ring-offset-black ${
                 isActive(link.href) ? "text-mist" : "text-mist/55 hover:text-mist"
               }`}
             >
               {link.label}
-              {isActive(link.href) && (
+              {isActive(link.href) ? (
                 <motion.span
                   layoutId="nav-underline"
                   className="absolute -bottom-2 left-0 h-px w-full bg-accent"
                 />
+              ) : (
+                <span className="absolute -bottom-2 left-0 h-px w-full origin-center scale-x-0 bg-accent/50 transition-transform duration-300 ease-out group-hover:scale-x-100" />
               )}
             </Link>
           ))}
