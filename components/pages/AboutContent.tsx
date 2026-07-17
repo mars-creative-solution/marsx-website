@@ -70,7 +70,7 @@ export default function AboutContent() {
       </section>
 
       {/* What We Do */}
-      <section className="relative bg-charcoal/20 py-20 lg:py-28">
+      <section className="relative bg-charcoal/20 py-24 lg:py-32">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -81,7 +81,7 @@ export default function AboutContent() {
           <span className="text-xs font-semibold tracking-[0.3em] text-accent">
             WHAT WE DO
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
             Enterprise AI, built for modern organizations
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-mist/60">
@@ -94,7 +94,7 @@ export default function AboutContent() {
       </section>
 
       {/* Why MarsX */}
-      <section className="relative bg-black py-20 lg:py-28">
+      <section className="relative bg-black py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <motion.div
             variants={fadeUp}
@@ -106,7 +106,7 @@ export default function AboutContent() {
             <span className="text-xs font-semibold tracking-[0.3em] text-accent">
               WHY MARSX
             </span>
-            <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl">
+            <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
               A partner engineered for enterprise
             </h2>
           </motion.div>

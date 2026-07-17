@@ -46,6 +46,18 @@
   }
 }
 
+@keyframes dot-halo {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.06;
+    transform: scale(1.4);
+  }
+}
+
 @keyframes drift {
   0%,
   100% {

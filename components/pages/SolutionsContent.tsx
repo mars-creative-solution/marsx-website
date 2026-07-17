@@ -28,7 +28,7 @@ export default function SolutionsContent() {
       </section>
 
       {/* Detailed solution rows */}
-      <section className="relative bg-black py-16 lg:py-20">
+      <section className="relative bg-black py-24 lg:py-32">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 lg:px-10">
           {SOLUTIONS.map((s, i) => (
             <motion.div

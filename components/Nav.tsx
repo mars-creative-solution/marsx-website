@@ -32,11 +32,17 @@ export default function Nav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "glass-strong" : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+        scrolled || open
+          ? "glass-strong border-mist/10"
+          : "border-transparent bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <nav
+        className={`mx-auto grid max-w-7xl grid-cols-[auto_1fr_auto] items-center px-6 transition-all duration-300 lg:px-10 ${
+          scrolled ? "py-3.5" : "py-5 lg:py-6"
+        }`}
+      >
         <Link href="/" className="flex items-center" aria-label="MarsX AI Solutions home">
           <Image
             src="/logo-full-transparent.png"
@@ -44,47 +50,49 @@ export default function Nav() {
             width={1028}
             height={303}
             priority
-            className="h-8 w-auto sm:h-9"
+            className={`w-auto transition-all duration-300 ${
+              scrolled ? "h-9 sm:h-10" : "h-11 sm:h-12"
+            }`}
           />
         </Link>
 
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center justify-center gap-10 lg:flex">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`relative text-sm font-medium transition-colors ${
-                isActive(link.href) ? "text-mist" : "text-mist/60 hover:text-mist"
+              className={`relative text-[0.9rem] font-medium tracking-tight transition-colors ${
+                isActive(link.href) ? "text-mist" : "text-mist/55 hover:text-mist"
               }`}
             >
               {link.label}
               {isActive(link.href) && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute -bottom-1.5 left-0 h-px w-full bg-accent"
+                  className="absolute -bottom-2 left-0 h-px w-full bg-accent"
                 />
               )}
             </Link>
           ))}
         </div>
 
-        <div className="hidden lg:block">
+        <div className="flex items-center justify-end gap-3">
           <Link
             href="/contact"
-            className="rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-black transition-transform hover:scale-105 hover:bg-accent/90"
+            className="hidden rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-black transition-transform hover:scale-105 hover:bg-accent/90 lg:inline-block"
           >
             Book a Demo
           </Link>
-        </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full border border-mist/15 lg:hidden"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-full border border-mist/15 lg:hidden"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -94,9 +102,9 @@ export default function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="glass-strong overflow-hidden lg:hidden"
+            className="overflow-hidden lg:hidden"
           >
-            <div className="flex flex-col gap-1 px-6 py-6">
+            <div className="flex flex-col gap-1 px-6 pb-8 pt-2">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}

@@ -34,7 +34,7 @@ export default function PlatformContent() {
       </section>
 
       {/* Platform Highlights */}
-      <section className="relative bg-black py-20 lg:py-28">
+      <section className="relative bg-black py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <motion.div
             variants={fadeUp}
@@ -46,7 +46,7 @@ export default function PlatformContent() {
             <span className="text-xs font-semibold tracking-[0.3em] text-accent">
               PLATFORM HIGHLIGHTS
             </span>
-            <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl">
+            <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
               Everything an enterprise needs to deploy AI
             </h2>
           </motion.div>
@@ -80,7 +80,7 @@ export default function PlatformContent() {
       </section>
 
       {/* Flagship: AI Digital Human */}
-      <section className="relative overflow-hidden bg-charcoal/20 py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-charcoal/20 py-24 lg:py-32">
         <div className="pointer-events-none absolute -right-16 top-1/2 -translate-y-1/2 opacity-10">
           <OrbitLogo size={380} animated={false} glow={false} />
         </div>
@@ -136,7 +136,7 @@ export default function PlatformContent() {
       />
 
       {/* Built for Growth */}
-      <section className="relative bg-black py-20 lg:py-28">
+      <section className="relative bg-black py-24 lg:py-32">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -147,7 +147,7 @@ export default function PlatformContent() {
           <span className="text-xs font-semibold tracking-[0.3em] text-accent">
             BUILT FOR GROWTH
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
             A platform that evolves with you
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-mist/60">

@@ -40,7 +40,7 @@ export default function ImmersiveShowcase({
           <span className="text-xs font-semibold tracking-[0.3em] text-accent">
             {eyebrow}
           </span>
-          <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl">
+          <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
             {heading}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-mist/60">{intro}</p>
