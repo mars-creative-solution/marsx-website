@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Archived components kept for reference only.
+    "components/_backup/**",
+    // Node build-time tooling scripts (CommonJS), not app code.
+    "scripts/**",
   ]),
 ]);
 

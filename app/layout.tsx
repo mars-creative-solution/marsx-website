@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Exo_2, Inter } from "next/font/google";
 import "./globals.css";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 const exo2 = Exo_2({
   variable: "--font-exo",
@@ -16,17 +18,21 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://marsx.ae"),
-  title: "MarsX AI Solutions | AI Avatars, Automation & Unreal Engine Experiences",
+  title: {
+    default: "MarsX AI Solutions | AI Digital Humans & Enterprise AI",
+    template: "%s",
+  },
   description:
-    "MarsX AI Solutions builds AI avatars, Unreal Engine experiences, intelligent automation, and premium software for forward-thinking businesses. Based in Dubai, UAE.",
+    "MarsX AI Solutions creates AI Digital Humans and enterprise AI experiences — powered by the MarsX AI Platform and SABR knowledge foundation. Built for governments, exhibitions, museums, and large organizations. Dubai, UAE.",
   keywords: [
     "MarsX",
-    "AI avatars",
+    "AI Digital Humans",
+    "enterprise AI",
+    "MarsX AI Platform",
+    "SABR",
+    "AI experiences",
     "Unreal Engine",
-    "AI automation",
-    "software development",
-    "Dubai AI agency",
-    "intelligent business solutions",
+    "Dubai AI company",
   ],
   icons: {
     icon: "/logo-icon.png",
@@ -34,9 +40,9 @@ export const metadata: Metadata = {
     apple: "/logo-icon.png",
   },
   openGraph: {
-    title: "MarsX AI Solutions",
+    title: "MarsX AI Solutions | AI Digital Humans & Enterprise AI",
     description:
-      "AI avatars, Unreal Engine experiences, automation and intelligent business solutions — engineered in Dubai.",
+      "AI Digital Humans and enterprise AI experiences, powered by the MarsX AI Platform. Engineered in Dubai for organizations that lead.",
     url: "https://marsx.ae",
     siteName: "MarsX AI Solutions",
     images: ["/logo-full.png"],
@@ -63,7 +69,9 @@ export default function RootLayout({
       className={`${exo2.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-mist overflow-x-hidden">
-        {children}
+        <Nav />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

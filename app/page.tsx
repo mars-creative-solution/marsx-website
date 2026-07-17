@@ -1,25 +1,19 @@
-import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Services from "@/components/Services";
-import Showcase from "@/components/Showcase";
-import Portfolio from "@/components/Portfolio";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import AboutPreview from "@/components/home/AboutPreview";
+import PlatformPreview from "@/components/home/PlatformPreview";
+import SolutionsPreview from "@/components/home/SolutionsPreview";
+import IndustriesPreview from "@/components/home/IndustriesPreview";
+import ContactCTA from "@/components/ContactCTA";
 
 export default function Home() {
   return (
     <>
-      <Nav />
-      <main className="flex-1">
-        <Hero />
-        <About />
-        <Services />
-        <Showcase />
-        <Portfolio />
-        <Contact />
-      </main>
-      <Footer />
+      <Hero />
+      <AboutPreview />
+      <PlatformPreview />
+      <SolutionsPreview />
+      <IndustriesPreview />
+      <ContactCTA />
     </>
   );
 }
