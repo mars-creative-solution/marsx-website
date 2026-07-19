@@ -81,7 +81,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-mist/40">
+      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-1 text-mist/55">
         <span className="text-[0.65rem] tracking-[0.3em]">SCROLL</span>
         <motion.span
           animate={{ y: [0, 8, 0] }}

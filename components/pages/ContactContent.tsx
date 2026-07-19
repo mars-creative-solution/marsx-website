@@ -59,7 +59,8 @@ export default function ContactContent() {
   const inputClass =
     "w-full rounded-xl border border-mist/10 bg-mist/5 px-4 py-3 text-sm text-mist placeholder:text-mist/30 outline-none transition-colors focus:border-accent/50";
   const labelClass =
-    "mb-2 block text-xs uppercase tracking-[0.2em] text-mist/40";
+    "mb-2 block text-xs uppercase tracking-[0.2em] text-mist/55";
+  const hasError = status === "error" && errors.length > 0;
 
   return (
     <section className="relative bg-black pb-8 pt-4">
@@ -84,7 +85,7 @@ export default function ContactContent() {
                       <c.icon size={18} />
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-mist/40">
+                      <p className="text-xs uppercase tracking-[0.2em] text-mist/55">
                         {c.label}
                       </p>
                       {c.href ? (
@@ -119,6 +120,8 @@ export default function ContactContent() {
           >
             {status === "success" ? (
               <motion.div
+                role="status"
+                aria-live="polite"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4 }}
@@ -150,19 +153,39 @@ export default function ContactContent() {
                 </motion.p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate aria-describedby={hasError ? "form-errors" : undefined}>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className={labelClass}>
                       Name
                     </label>
-                    <input id="name" name="name" type="text" placeholder="Your name" className={inputClass} />
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      placeholder="Your name"
+                      className={inputClass}
+                      required
+                      aria-required="true"
+                      aria-invalid={hasError || undefined}
+                      autoComplete="name"
+                    />
                   </div>
                   <div>
                     <label htmlFor="email" className={labelClass}>
                       Email
                     </label>
-                    <input id="email" name="email" type="email" placeholder="you@company.com" className={inputClass} />
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="you@company.com"
+                      className={inputClass}
+                      required
+                      aria-required="true"
+                      aria-invalid={hasError || undefined}
+                      autoComplete="email"
+                    />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -170,13 +193,27 @@ export default function ContactContent() {
                     <label htmlFor="company" className={labelClass}>
                       Organization
                     </label>
-                    <input id="company" name="company" type="text" placeholder="Company / entity" className={inputClass} />
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      placeholder="Company / entity"
+                      className={inputClass}
+                      autoComplete="organization"
+                    />
                   </div>
                   <div>
                     <label htmlFor="phone" className={labelClass}>
                       Phone
                     </label>
-                    <input id="phone" name="phone" type="tel" placeholder="Optional" className={inputClass} />
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="Optional"
+                      className={inputClass}
+                      autoComplete="tel"
+                    />
                   </div>
                 </div>
                 <div>
@@ -204,12 +241,17 @@ export default function ContactContent() {
                     rows={5}
                     placeholder="Tell us what you're looking to build..."
                     className={`${inputClass} resize-none`}
+                    required
+                    aria-required="true"
+                    aria-invalid={hasError || undefined}
                   />
                 </div>
 
                 <AnimatePresence>
-                  {status === "error" && errors.length > 0 && (
+                  {hasError && (
                     <motion.div
+                      id="form-errors"
+                      role="alert"
                       initial={{ opacity: 0, y: -6 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}

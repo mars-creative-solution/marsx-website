@@ -27,6 +27,15 @@ export default function Nav() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
@@ -63,6 +72,7 @@ export default function Nav() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={isActive(link.href) ? "page" : undefined}
               className={`group relative rounded-sm text-[0.9rem] font-medium tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/50 focus-visible:ring-offset-4 focus-visible:ring-offset-black ${
                 isActive(link.href) ? "text-mist" : "text-mist/55 hover:text-mist"
               }`}
@@ -90,9 +100,10 @@ export default function Nav() {
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 place-items-center rounded-full border border-mist/15 lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border border-mist/15 lg:hidden"
             aria-label="Toggle menu"
             aria-expanded={open}
+            aria-controls="mobile-nav-menu"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -102,6 +113,7 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="mobile-nav-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -114,7 +126,8 @@ export default function Nav() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-mist/5 ${
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  className={`rounded-lg px-3 py-3.5 text-base font-medium transition-colors hover:bg-mist/5 ${
                     isActive(link.href) ? "text-accent" : "text-mist/80 hover:text-mist"
                   }`}
                 >

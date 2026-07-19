@@ -27,15 +27,15 @@ export default function Footer() {
 
           <div className="flex flex-col gap-10 sm:flex-row sm:gap-16">
             <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-mist/40">
+              <p className="text-xs font-semibold tracking-[0.2em] text-mist/55">
                 NAVIGATE
               </p>
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-4 space-y-1 lg:space-y-2.5">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-mist/60 transition-colors hover:text-mist"
+                      className="-mx-2 flex items-center rounded-lg px-2 py-2 text-sm text-mist/60 transition-colors hover:bg-mist/5 hover:text-mist lg:mx-0 lg:px-0 lg:py-0"
                     >
                       {link.label}
                     </Link>
@@ -45,23 +45,29 @@ export default function Footer() {
             </div>
 
             <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-mist/40">
+              <p className="text-xs font-semibold tracking-[0.2em] text-mist/55">
                 CONTACT
               </p>
-              <ul className="mt-4 space-y-3 text-sm text-mist/60">
-                <li className="flex items-center gap-2.5">
-                  <MapPin size={15} className="text-accent" />
+              <ul className="mt-4 space-y-1 text-sm text-mist/60 lg:space-y-3">
+                <li className="-mx-2 flex items-center gap-2.5 rounded-lg px-2 py-2 lg:mx-0 lg:px-0 lg:py-0">
+                  <MapPin size={15} className="shrink-0 text-accent" />
                   {SITE.location}
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Mail size={15} className="text-accent" />
-                  <a href={`mailto:${SITE.email}`} className="transition-colors hover:text-mist">
+                <li>
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="-mx-2 flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-mist/5 hover:text-mist lg:mx-0 lg:px-0 lg:py-0"
+                  >
+                    <Mail size={15} className="shrink-0 text-accent" />
                     {SITE.email}
                   </a>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Phone size={15} className="text-accent" />
-                  <a href={SITE.phoneHref} className="transition-colors hover:text-mist">
+                <li>
+                  <a
+                    href={SITE.phoneHref}
+                    className="-mx-2 flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-mist/5 hover:text-mist lg:mx-0 lg:px-0 lg:py-0"
+                  >
+                    <Phone size={15} className="shrink-0 text-accent" />
                     {SITE.phone}
                   </a>
                 </li>
@@ -70,7 +76,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col-reverse items-center justify-between gap-4 border-t border-mist/10 pt-8 text-xs text-mist/40 sm:flex-row">
+        <div className="mt-12 flex flex-col-reverse items-center justify-between gap-4 border-t border-mist/10 pt-8 text-xs text-mist/55 sm:flex-row">
           <p>&copy; {year} MarsX AI Solutions. All Rights Reserved.</p>
           <p>{SITE.website}</p>
         </div>

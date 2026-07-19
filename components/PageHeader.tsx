@@ -11,7 +11,7 @@ type PageHeaderProps = {
 
 export default function PageHeader({ eyebrow, title, intro }: PageHeaderProps) {
   return (
-    <section className="relative overflow-hidden bg-black pt-44 pb-20 lg:pt-52 lg:pb-28">
+    <section className="relative overflow-hidden bg-black pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-52 lg:pb-28">
       <div className="pointer-events-none absolute inset-0 grid-overlay noise-mask opacity-30" />
       <div className="pointer-events-none absolute -right-24 -top-16 opacity-[0.07]">
         <OrbitLogo size={420} animated={false} glow={false} />

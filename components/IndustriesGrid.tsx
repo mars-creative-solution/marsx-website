@@ -19,7 +19,7 @@ export default function IndustriesGrid({ variant = "full" }: IndustriesGridProps
       viewport={inView}
       className={
         variant === "compact"
-          ? "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5"
+          ? "grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
           : "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       }
     >
