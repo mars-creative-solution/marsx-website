@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import { Exo_2, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const exo2 = Exo_2({
   variable: "--font-exo",
@@ -83,6 +86,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </MotionProvider>
+        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
       </body>
     </html>
   );
