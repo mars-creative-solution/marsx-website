@@ -1,19 +1,35 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { validateContact } from "@/lib/contact";
+import { sendContactEmail } from "@/lib/mailer";
 
-// Contact form endpoint.
-//
-// This is intentionally structured as an integration point: validation is
-// shared with the client via lib/contact.ts, and the delivery step below is
-// isolated behind `deliverContact()` so wiring a real email service (e.g.
-// Resend, SendGrid, SES) or a CRM webhook is a single localized change.
-//
-// To enable email delivery later:
-//   1. Add the provider SDK and set credentials in the environment
-//      (e.g. RESEND_API_KEY, CONTACT_TO_ADDRESS).
-//   2. Implement `deliverContact()` to send to SITE.email (info@marsx.ae).
+// Simple in-memory rate limit. The app runs as a single long-lived Node
+// process on the VPS (`next start`), so a module-level Map persists across
+// requests without needing external storage — no DB or third-party service
+// required for basic abuse protection.
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_SUBMISSIONS = 5;
+const submissionsByIp = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (submissionsByIp.get(ip) ?? []).filter(
+    (timestamp) => now - timestamp < RATE_LIMIT_WINDOW_MS,
+  );
+  recent.push(now);
+  submissionsByIp.set(ip, recent);
+  return recent.length > RATE_LIMIT_MAX_SUBMISSIONS;
+}
 
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { ok: false, errors: ["Too many submissions. Please try again later."] },
+      { status: 429 },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -30,7 +46,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    await deliverContact(result.data);
+    await sendContactEmail(result.data);
   } catch (err) {
     console.error("[contact] delivery failed", err);
     return NextResponse.json(
@@ -40,20 +56,4 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.json({ ok: true });
-}
-
-import type { ContactPayload } from "@/lib/contact";
-
-async function deliverContact(payload: ContactPayload): Promise<void> {
-  // TODO: integrate an email service / CRM here. Until then, log server-side so
-  // submissions are observable during development without dropping data silently.
-  console.info("[contact] submission received", {
-    name: payload.name,
-    email: payload.email,
-    company: payload.company ?? "-",
-    phone: payload.phone ?? "-",
-    interest: payload.interest ?? "-",
-    message: payload.message,
-    at: new Date().toISOString(),
-  });
 }
