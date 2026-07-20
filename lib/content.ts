@@ -61,13 +61,12 @@ export type Solution = {
 
 export const SOLUTIONS: Solution[] = [
   {
-    slug: "sabr",
-    icon: "database",
-    name: "SABR",
-    eyebrow: "Enterprise AI Knowledge Foundation",
-    summary: "Transform organizational knowledge into an AI-ready foundation.",
+    slug: "custom-ai",
+    icon: "puzzle",
+    name: "Custom AI Solutions",
+    summary: "Tailored AI systems built around your objectives.",
     description:
-      "We organize documents, policies, procedures, manuals, and institutional knowledge into a structured intelligence layer that powers reliable AI applications.",
+      "From concept to deployment, we build tailored AI systems designed specifically around your business objectives, workflows, and operational requirements.",
   },
   {
     slug: "ai-experiences",
@@ -78,12 +77,13 @@ export const SOLUTIONS: Solution[] = [
       "Create immersive AI-powered experiences for exhibitions, museums, visitor centers, smart cities, and customer engagement environments.",
   },
   {
-    slug: "custom-ai",
-    icon: "puzzle",
-    name: "Custom AI Solutions",
-    summary: "Tailored AI systems built around your objectives.",
+    slug: "sabr",
+    icon: "database",
+    name: "SABR",
+    eyebrow: "Enterprise AI Knowledge Foundation",
+    summary: "Transform organizational knowledge into an AI-ready foundation.",
     description:
-      "From concept to deployment, we build tailored AI systems designed specifically around your business objectives, workflows, and operational requirements.",
+      "We organize documents, policies, procedures, manuals, and institutional knowledge into a structured intelligence layer that powers reliable AI applications.",
   },
 ];
 
@@ -152,6 +152,11 @@ export type Industry = {
 
 export const INDUSTRIES: Industry[] = [
   {
+    icon: "presentation",
+    name: "Events & Exhibitions",
+    description: "Interactive digital presenters and visitor engagement.",
+  },
+  {
     icon: "landmark",
     name: "Government",
     description: "Digital citizen engagement and intelligent public services.",
@@ -182,11 +187,6 @@ export const INDUSTRIES: Industry[] = [
     name: "Retail",
     description:
       "Intelligent shopping assistance and personalized customer experiences.",
-  },
-  {
-    icon: "presentation",
-    name: "Events & Exhibitions",
-    description: "Interactive digital presenters and visitor engagement.",
   },
   {
     icon: "palette",
