@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Phone, MapPin, Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { EASE, fadeUp, inView } from "@/lib/motion";
 import { SITE } from "@/lib/content";
-import { INTEREST_OPTIONS } from "@/lib/contact";
+import { INTEREST_OPTIONS, validateContact } from "@/lib/contact";
 import OrbitLogo from "../OrbitLogo";
 
 const CONTACT_ITEMS = [
@@ -19,11 +19,15 @@ type Status = "idle" | "sending" | "success" | "error";
 export default function ContactContent() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<string[]>([]);
+  // Captured on mount; submissions faster than a human could type are
+  // treated as spam (see MIN_FILL_TIME_MS in lib/contact.ts).
+  const [startedAt] = useState(() => Date.now());
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
-    setErrors([]);
+    // Guard against double-submit (e.g. rapid double Enter/click) beyond the
+    // disabled button, since state updates aren't synchronous.
+    if (status === "sending") return;
 
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -34,7 +38,19 @@ export default function ContactContent() {
       phone: String(fd.get("phone") ?? ""),
       interest: String(fd.get("interest") ?? ""),
       message: String(fd.get("message") ?? ""),
+      website: String(fd.get("website") ?? ""),
+      startedAt,
     };
+
+    const validation = validateContact(payload);
+    if (!validation.ok) {
+      setErrors(validation.errors);
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+    setErrors([]);
 
     try {
       const res = await fetch("/api/contact", {
@@ -154,6 +170,11 @@ export default function ContactContent() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate aria-describedby={hasError ? "form-errors" : undefined}>
+                {/* Honeypot: hidden from real users, bots that auto-fill every field trip it */}
+                <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+                  <label htmlFor="website">Leave this field empty</label>
+                  <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className={labelClass}>
