@@ -24,6 +24,11 @@ import {
   Lightbulb,
   Bot,
   Expand,
+  Mic,
+  AudioLines,
+  Shirt,
+  Smile,
+  Image as ImageIcon,
   type LucideIcon,
 } from "lucide-react";
 import type { IconKey } from "@/lib/content";
@@ -54,6 +59,11 @@ const ICONS: Record<IconKey, LucideIcon> = {
   lightbulb: Lightbulb,
   bot: Bot,
   expand: Expand,
+  mic: Mic,
+  "audio-lines": AudioLines,
+  shirt: Shirt,
+  smile: Smile,
+  image: ImageIcon,
 };
 
 type IconProps = {

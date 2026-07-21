@@ -28,7 +28,12 @@ export type IconKey =
   | "puzzle"
   | "lightbulb"
   | "bot"
-  | "expand";
+  | "expand"
+  | "mic"
+  | "audio-lines"
+  | "shirt"
+  | "smile"
+  | "image";
 
 export const SITE = {
   name: "MarsX AI Solutions",
@@ -233,5 +238,128 @@ export const WHY_MARSX: ValuePillar[] = [
     icon: "expand",
     title: "Scalable by Design",
     description: "Ready for cloud, on-premise, and enterprise deployment.",
+  },
+];
+
+// Nasser — the flagship AI digital human. Presented chest-up with tight facial
+// framing (see components/home/NasserFigure.tsx). His live states drive the
+// "Meet Nasser" section; the demo's purple UI is re-skinned to MarsX orange.
+export const NASSER = {
+  name: "Nasser",
+  role: "AI Digital Ambassador",
+  eyebrow: "MEET NASSER",
+  intro:
+    "A lifelike Emirati AI presenter who listens, understands, and responds in Arabic and English — engineered for governments, exhibitions, museums, and flagship spaces.",
+  // Path to the production render. Falls back to an elegant placeholder until
+  // this asset is added (see NasserFigure).
+  image: "/nasser.png",
+} as const;
+
+export type NasserState = {
+  key: string;
+  icon: IconKey;
+  label: string;
+  caption: string;
+};
+
+export const NASSER_STATES: NasserState[] = [
+  {
+    key: "listening",
+    icon: "mic",
+    label: "Listening",
+    caption:
+      "Real-time speech recognition captures each question naturally, in Arabic or English.",
+  },
+  {
+    key: "thinking",
+    icon: "brain",
+    label: "Thinking",
+    caption:
+      "Reasoning over your organization's knowledge through the SABR foundation for an accurate answer.",
+  },
+  {
+    key: "responding",
+    icon: "audio-lines",
+    label: "Responding",
+    caption:
+      "Speaking back with lifelike voice, expression, and lip-sync — measured, warm, and on-brand.",
+  },
+];
+
+export type CustomizationOption = {
+  icon: IconKey;
+  title: string;
+  description: string;
+};
+
+export const NASSER_CUSTOMIZATION: CustomizationOption[] = [
+  {
+    icon: "shirt",
+    title: "Appearance & Attire",
+    description:
+      "National dress, corporate, or bespoke wardrobe — matched to your brand and setting.",
+  },
+  {
+    icon: "languages",
+    title: "Language & Dialect",
+    description:
+      "Emirati and Gulf Arabic, English, and multilingual delivery for global audiences.",
+  },
+  {
+    icon: "audio-lines",
+    title: "Voice & Tone",
+    description:
+      "Tune pace, warmth, and authority — from ceremonial and official to conversational.",
+  },
+  {
+    icon: "smile",
+    title: "Personality",
+    description:
+      "Shape character and demeanor so every interaction feels intentional and human.",
+  },
+  {
+    icon: "database",
+    title: "Knowledge Domain",
+    description:
+      "Grounded in your documents, policies, and institutional knowledge via SABR.",
+  },
+  {
+    icon: "image",
+    title: "Environment & Scene",
+    description:
+      "Place him in any real-time Unreal Engine backdrop — from majlis to museum hall.",
+  },
+];
+
+export type ProcessStep = {
+  icon: IconKey;
+  title: string;
+  description: string;
+};
+
+export const HOW_IT_WORKS: ProcessStep[] = [
+  {
+    icon: "puzzle",
+    title: "Define",
+    description:
+      "We shape appearance, voice, language, and personality around your brand and audience.",
+  },
+  {
+    icon: "database",
+    title: "Train on SABR",
+    description:
+      "Your knowledge is structured into an AI-ready foundation for reliable, accurate answers.",
+  },
+  {
+    icon: "cloud",
+    title: "Deploy",
+    description:
+      "Launch on kiosks, screens, web, and immersive installations — cloud or on-premise.",
+  },
+  {
+    icon: "bot",
+    title: "Engage",
+    description:
+      "Nasser converses in real time, welcoming and guiding every visitor, day and night.",
   },
 ];
