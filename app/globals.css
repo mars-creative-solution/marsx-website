@@ -191,19 +191,38 @@ body {
   }
 }
 
-/* Slow, dignified idle breathing for the avatar figure. */
+/* Idle "alive" motion for the avatar. Two layers are composed on nested
+   elements (each keyframe animates `transform`, so they can't share one node):
+   an inner breath (vertical rise + micro-scale) and an outer drift (slow lateral
+   sway + a fraction of a degree of rotation) for depth. Slow and restrained —
+   suitable for government/enterprise audiences — and fully neutralized under the
+   reduced-motion rule below. */
 @keyframes nasser-breathe {
   0%,
   100% {
     transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-4px) scale(1.008);
+    transform: translateY(-7px) scale(1.014);
   }
 }
 
 .nasser-breathe {
-  animation: nasser-breathe 6s ease-in-out infinite;
+  animation: nasser-breathe 5.5s ease-in-out infinite;
+}
+
+@keyframes nasser-drift {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(7px) rotate(0.35deg);
+  }
+}
+
+.nasser-drift {
+  animation: nasser-drift 13s ease-in-out infinite;
 }
 
 .grid-overlay {
