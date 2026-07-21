@@ -10,10 +10,10 @@ import NasserFigure from "./NasserFigure";
 export default function NasserHero() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden bg-black pt-28 pb-20 lg:pt-32">
-      {/* Background layers — preserved from the original hero */}
+      {/* Background layers — preserved from the original hero, glow softened ~50% */}
       <div className="pointer-events-none absolute inset-0 grid-overlay noise-mask opacity-40" />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[90px]" />
-      <div className="pointer-events-none absolute -left-32 top-24 h-72 w-72 rounded-full bg-accent/10 blur-[70px] animate-drift" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/10 blur-[90px]" />
+      <div className="pointer-events-none absolute -left-32 top-24 h-72 w-72 rounded-full bg-accent/5 blur-[70px] animate-drift" />
       <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-charcoal/60 blur-[80px]" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-10 lg:px-10">
@@ -22,12 +22,13 @@ export default function NasserHero() {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: EASE }}
-          className="order-1 mx-auto w-full max-w-sm lg:order-2 lg:max-w-none"
+          className="order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none"
         >
           <NasserFigure
             breathe
+            drift
             priority
-            className="aspect-[3/4] w-full lg:aspect-[4/5]"
+            className="aspect-[4/5] w-full lg:aspect-auto lg:h-[74vh]"
           />
         </motion.div>
 
@@ -37,7 +38,7 @@ export default function NasserHero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="flex items-center justify-center gap-3 lg:justify-start"
+            className="flex items-center justify-center gap-6 lg:justify-start"
           >
             <OrbitLogo size={44} spinDuration={28} glow={false} />
             <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium tracking-[0.25em] text-mist/70">
@@ -57,16 +58,21 @@ export default function NasserHero() {
             <span className="text-gradient">Powered by AI.</span>
           </motion.h1>
 
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.26, ease: EASE }}
-            className="mx-auto mt-6 max-w-xl text-balance text-base leading-relaxed text-mist/60 sm:text-lg lg:mx-0"
+            className="mx-auto mt-6 max-w-xl space-y-4 text-base leading-relaxed text-mist/60 sm:text-lg lg:mx-0"
           >
-            Meet Nasser — a lifelike AI digital human who listens, understands,
-            and responds in Arabic and English. Designed for exhibitions,
-            customer experience, and public engagement.
-          </motion.p>
+            <p>
+              Meet Nasser — a lifelike AI digital human that listens,
+              understands, and responds in Arabic and English.
+            </p>
+            <p>
+              Built for governments, exhibitions, museums, and enterprise
+              experiences across the UAE.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
