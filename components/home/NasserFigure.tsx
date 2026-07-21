@@ -10,7 +10,7 @@ type NasserFigureProps = {
   breathe?: boolean;
   /** Outer drift: slow lateral sway + sub-degree rotation, for depth. */
   drift?: boolean;
-  /** Holographic rim glow on the silhouette + a faint scan drifting down. */
+  /** Soft accent rim glow tracing the silhouette. */
   hologram?: boolean;
   /** Internal soft radial light. Off when a parent (the stage) provides its own. */
   glow?: boolean;
@@ -106,13 +106,6 @@ export default function NasserFigure({
           )}
         </div>
       </div>
-
-      {/* Faint holographic scan drifting down the form */}
-      {hologram && (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="holo-scan absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-transparent via-accent/10 to-transparent" />
-        </div>
-      )}
 
       {/* Bottom dissolve into the page background — no hard edge */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black via-black/60 to-transparent" />

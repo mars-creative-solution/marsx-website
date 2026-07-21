@@ -29,17 +29,17 @@ export default function HoloHud() {
           key={token.text}
           dir={token.lang === "ar" ? "rtl" : "ltr"}
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0.32, 0.32, 0], y: [8, 0, 0, -8] }}
+          animate={{ opacity: [0, 0.22, 0.22, 0], y: [8, 0, 0, -8] }}
           transition={{
-            duration: 7,
+            duration: 8,
             times: [0, 0.2, 0.8, 1],
-            delay: i * 1.15,
+            delay: i * 1.6,
             repeat: Infinity,
-            repeatDelay: 3.5,
+            repeatDelay: 5,
             ease: EASE,
           }}
           className={`absolute ${SLOTS[i % SLOTS.length]} font-display text-[0.6rem] font-medium tracking-[0.28em] ${
-            token.lang === "ar" ? "text-mist/35" : "text-accent/45"
+            token.lang === "ar" ? "text-mist/30" : "text-accent/35"
           }`}
         >
           {token.text}

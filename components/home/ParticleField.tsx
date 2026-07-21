@@ -55,12 +55,13 @@ export default function ParticleField({ count = 46, className = "" }: ParticleFi
     const spawn = (initial = false): Particle => ({
       x: rand(width * 0.12, width * 0.88),
       y: initial ? rand(0, height) : rand(height * 0.6, height * 1.05),
-      r: rand(0.6, 2.2),
-      vx: rand(-0.06, 0.06),
-      vy: rand(-0.2, -0.05),
+      r: rand(0.5, 1.7),
+      vx: rand(-0.05, 0.05),
+      vy: rand(-0.16, -0.04),
       life: 0,
-      maxLife: rand(6, 14) * 60,
-      trail: Math.random() < 0.14 ? rand(6, 16) : 0,
+      maxLife: rand(8, 16) * 60,
+      // No light-streaks — quiet ambient dust reads premium, not sci-fi/gaming.
+      trail: 0,
     });
 
     const resize = () => {
@@ -89,7 +90,7 @@ export default function ParticleField({ count = 46, className = "" }: ParticleFi
         const nx = p.x / width;
         const ny = p.y / height;
         const inFace = ny > 0.1 && ny < 0.48 && nx > 0.28 && nx < 0.72;
-        const alpha = 0.5 * fade * (inFace ? 0.22 : 1);
+        const alpha = 0.32 * fade * (inFace ? 0.22 : 1);
 
         if (p.trail > 0) {
           const grd = ctx.createLinearGradient(p.x, p.y, p.x, p.y + p.trail);

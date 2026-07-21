@@ -26,7 +26,7 @@ export default function NasserHero() {
         >
           <NasserStage
             priority
-            speaking
+            nameplate
             className="aspect-[4/5] w-full lg:aspect-auto lg:h-[74vh]"
           />
         </motion.div>

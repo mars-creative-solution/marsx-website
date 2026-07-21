@@ -295,10 +295,8 @@ export type HudToken = { text: string; lang: "ar" | "en" };
 export const NASSER_HUD: HudToken[] = [
   { text: "مرحبًا", lang: "ar" },
   { text: "MarsX AI", lang: "en" },
+  { text: "أهلًا وسهلًا", lang: "ar" },
   { text: "الذكاء الاصطناعي", lang: "ar" },
-  { text: "REAL-TIME", lang: "en" },
-  { text: "AR / EN", lang: "en" },
-  { text: "جاهز", lang: "ar" },
 ];
 
 export type NasserState = {
