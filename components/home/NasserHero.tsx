@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { EASE } from "@/lib/motion";
 import OrbitLogo from "../OrbitLogo";
-import NasserFigure from "./NasserFigure";
+import NasserStage from "./NasserStage";
 
 export default function NasserHero() {
   return (
@@ -24,9 +24,7 @@ export default function NasserHero() {
           transition={{ duration: 0.8, ease: EASE }}
           className="order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none"
         >
-          <NasserFigure
-            breathe
-            drift
+          <NasserStage
             priority
             className="aspect-[4/5] w-full lg:aspect-auto lg:h-[74vh]"
           />

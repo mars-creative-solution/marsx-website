@@ -53,7 +53,7 @@ export default function MeetNasser() {
             viewport={inView}
             className="relative mx-auto w-full max-w-sm lg:max-w-md"
           >
-            <NasserFigure breathe drift className="aspect-[4/5] w-full" />
+            <NasserFigure breathe drift hologram className="aspect-[4/5] w-full" />
 
             {/* Orange state chip — the demo's purple "Listening…" re-skinned */}
             <div className="absolute inset-x-0 bottom-5 flex justify-center">
