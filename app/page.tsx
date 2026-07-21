@@ -1,6 +1,6 @@
 import NasserHero from "@/components/home/NasserHero";
 import AboutPreview from "@/components/home/AboutPreview";
-import MeetNasser from "@/components/home/MeetNasser";
+import AmbassadorsShowcase from "@/components/home/AmbassadorsShowcase";
 import PlatformPreview from "@/components/home/PlatformPreview";
 import CustomizeSection from "@/components/home/CustomizeSection";
 import HowItWorks from "@/components/home/HowItWorks";
@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <NasserHero />
       <AboutPreview />
-      <MeetNasser />
+      <AmbassadorsShowcase />
       <PlatformPreview />
       <CustomizeSection />
       <HowItWorks />
