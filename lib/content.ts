@@ -255,6 +255,20 @@ export const NASSER = {
   image: "/nasser.png",
 } as const;
 
+// Faint bilingual interface fragments that fade in/out around Nasser in the
+// holographic hero (components/home/HoloHud.tsx). Purely decorative — rendered
+// aria-hidden — to evoke a live AI system without labeling the screen.
+export type HudToken = { text: string; lang: "ar" | "en" };
+
+export const NASSER_HUD: HudToken[] = [
+  { text: "مرحبًا", lang: "ar" },
+  { text: "MarsX AI", lang: "en" },
+  { text: "الذكاء الاصطناعي", lang: "ar" },
+  { text: "REAL-TIME", lang: "en" },
+  { text: "AR / EN", lang: "en" },
+  { text: "جاهز", lang: "ar" },
+];
+
 export type NasserState = {
   key: string;
   icon: IconKey;
