@@ -244,16 +244,48 @@ export const WHY_MARSX: ValuePillar[] = [
 // Nasser — the flagship AI digital human. Presented chest-up with tight facial
 // framing (see components/home/NasserFigure.tsx). His live states drive the
 // "Meet Nasser" section; the demo's purple UI is re-skinned to MarsX orange.
-export const NASSER = {
+// Nasser's media is intentionally pluggable: a transparent still (PNG with
+// alpha) OR a looping Unreal clip (alpha WebM/HEVC, or a solid-black render
+// blended into the page). Setting `video` makes it take priority over the
+// still; both fall back to an elegant placeholder until a real asset exists.
+// The asset MUST be background-free — CSS cannot strip a baked-in environment
+// (e.g. a marble wall); that has to be removed in the render/export itself.
+export type NasserMedia = {
+  /**
+   * Flip to `true` once a real background-free asset exists. While `false`,
+   * NasserFigure shows the placeholder and never mounts an <img>/<video> — so
+   * there are no 404s or console warnings for a not-yet-provided asset.
+   */
+  available: boolean;
+  /** Transparent still (PNG with alpha). Used when no `video` is set. */
+  image: string;
+  /** Optional looping clip; when set it takes priority over the still. */
+  video?: string;
+  /** True if the asset sits on solid black — blend it into the page (screen). */
+  blendBlackBackground?: boolean;
+};
+
+export const NASSER: {
+  name: string;
+  role: string;
+  eyebrow: string;
+  intro: string;
+  media: NasserMedia;
+} = {
   name: "Nasser",
   role: "AI Digital Ambassador",
   eyebrow: "MEET NASSER",
   intro:
     "A lifelike Emirati AI presenter who listens, understands, and responds in Arabic and English — engineered for governments, exhibitions, museums, and flagship spaces.",
-  // Path to the production render. Falls back to an elegant placeholder until
-  // this asset is added (see NasserFigure).
-  image: "/nasser.png",
-} as const;
+  media: {
+    // A transparent nasser.png is deployed on the server. If the file is ever
+    // missing, NasserFigure gracefully falls back to the placeholder.
+    available: true,
+    image: "/nasser.png",
+    video: undefined,
+    blendBlackBackground: false,
+  },
+};
 
 // Faint bilingual interface fragments that fade in/out around Nasser in the
 // holographic hero (components/home/HoloHud.tsx). Purely decorative — rendered
