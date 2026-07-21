@@ -287,6 +287,40 @@ export const NASSER: {
   },
 };
 
+// The avatar roster shown in the "Meet the Ambassadors" gallery
+// (components/home/AmbassadorsShowcase.tsx). Each entry reuses the pluggable
+// NasserMedia contract, so a transparent PNG or Unreal loop drops in per avatar
+// with no code change. All three expect transparent renders on the server at
+// the paths below; if a file is missing, NasserFigure falls back to the
+// placeholder gracefully.
+export type Ambassador = {
+  id: string;
+  name: string;
+  role: string;
+  media: NasserMedia;
+};
+
+export const AMBASSADORS: Ambassador[] = [
+  {
+    id: "nasser",
+    name: NASSER.name,
+    role: NASSER.role,
+    media: NASSER.media,
+  },
+  {
+    id: "julia",
+    name: "Julia",
+    role: "AI Digital Ambassador",
+    media: { available: true, image: "/julia.png" },
+  },
+  {
+    id: "jhonny",
+    name: "Jhonny",
+    role: "AI Digital Ambassador",
+    media: { available: true, image: "/jhonny.png" },
+  },
+];
+
 // Faint bilingual interface fragments that fade in/out around Nasser in the
 // holographic hero (components/home/HoloHud.tsx). Purely decorative — rendered
 // aria-hidden — to evoke a live AI system without labeling the screen.
