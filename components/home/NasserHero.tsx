@@ -26,6 +26,7 @@ export default function NasserHero() {
         >
           <NasserStage
             priority
+            nameplate
             className="aspect-[4/5] w-full lg:aspect-auto lg:h-[74vh]"
           />
         </motion.div>
@@ -60,13 +61,13 @@ export default function NasserHero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.26, ease: EASE }}
-            className="mx-auto mt-6 max-w-xl space-y-4 text-base leading-relaxed text-mist/60 sm:text-lg lg:mx-0"
+            className="mx-auto mt-6 max-w-xl space-y-3 text-base leading-relaxed sm:text-lg lg:mx-0"
           >
-            <p>
+            <p className="text-mist/75">
               Meet Nasser — a lifelike AI digital human that listens,
               understands, and responds in Arabic and English.
             </p>
-            <p>
+            <p className="text-mist/50">
               Built for governments, exhibitions, museums, and enterprise
               experiences across the UAE.
             </p>

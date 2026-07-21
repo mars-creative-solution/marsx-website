@@ -203,12 +203,12 @@ body {
     transform: translateY(0) scale(1);
   }
   50% {
-    transform: translateY(-7px) scale(1.014);
+    transform: translateY(-5px) scale(1.01);
   }
 }
 
 .nasser-breathe {
-  animation: nasser-breathe 5.5s ease-in-out infinite;
+  animation: nasser-breathe 6.5s ease-in-out infinite;
 }
 
 @keyframes nasser-drift {
@@ -217,53 +217,31 @@ body {
     transform: translateX(0) rotate(0deg);
   }
   50% {
-    transform: translateX(7px) rotate(0.35deg);
+    transform: translateX(5px) rotate(0.25deg);
   }
 }
 
 .nasser-drift {
-  animation: nasser-drift 13s ease-in-out infinite;
+  animation: nasser-drift 16s ease-in-out infinite;
 }
 
-/* Holographic stage — a slow volumetric key light Nasser emerges from, plus a
-   faint hologram scan drifting down his form. Decorative depth only; both are
-   neutralized under the reduced-motion rule below. The keyframe carries the
-   centering translate so it composes with left-1/2 positioning. */
+/* Holographic stage — a slow volumetric key light Nasser emerges from.
+   Decorative depth only; neutralized under the reduced-motion rule below. The
+   keyframe carries the centering translate so it composes with left-1/2. */
 @keyframes holo-keylight {
   0%,
   100% {
-    opacity: 0.45;
+    opacity: 0.4;
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 0.62;
+    transform: translate(-50%, -50%) scale(1.04);
   }
 }
 
 .holo-keylight {
-  animation: holo-keylight 14s ease-in-out infinite;
-}
-
-@keyframes holo-scan {
-  0% {
-    transform: translateY(-20%);
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.5;
-  }
-  80% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(120%);
-    opacity: 0;
-  }
-}
-
-.holo-scan {
-  animation: holo-scan 11s ease-in-out infinite;
+  animation: holo-keylight 16s ease-in-out infinite;
 }
 
 .grid-overlay {
