@@ -35,6 +35,10 @@ export default function AmbassadorsShowcase() {
             Every ambassador is built on the same platform, shaped into a
             distinct persona for a different industry and audience.
           </p>
+          <p className="mt-3 text-sm leading-relaxed text-mist/45">
+            Designed for governments, exhibitions, museums, hospitality, and
+            every experience in between.
+          </p>
         </motion.div>
 
         {/* Avatar gallery — portrait + name only; no per-card subtitle */}
@@ -55,6 +59,7 @@ export default function AmbassadorsShowcase() {
                 hologram
                 media={a.media}
                 name={a.name}
+                role=""
                 className="aspect-[3/4] w-full max-w-xs"
               />
               <span className="mt-5 font-display text-sm font-semibold tracking-[0.3em] text-mist/85">
