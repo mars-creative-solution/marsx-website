@@ -1,148 +1,151 @@
 /**
  * Premium monochrome line-art for each Deploy Anywhere tile — sits softly
- * behind the card text so a visitor recognizes the scenario before reading the
- * label. Pure stroke-based illustrations (no fill, no photos), inheriting a
- * single `currentColor` so each card can tint it via a low-opacity text color
- * class (kept low-contrast/secondary per the brief). viewBox is a consistent
- * 0 0 200 200 so illustrations scale cleanly at any tile size.
+ * behind the card text so a visitor recognizes the device/surface before
+ * reading the label. Redesigned to be literal, iconic pictograms (a browser,
+ * a phone, a laptop, a projector beam...) rather than illustrated scenes —
+ * clarity over abstraction. Pure stroke-based (no fill, no photos), inheriting
+ * a single `currentColor` so each card can tint/size it via className. viewBox
+ * is a consistent 0 0 200 200 so illustrations scale cleanly at any tile size.
  */
 
 import type { ReactElement } from "react";
 
 type ArtProps = { className?: string };
 
-const commonStroke = {
+const S = {
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 3,
+  strokeWidth: 5,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
 };
 
 function Holograms({ className }: ArtProps) {
-  // A holographic podium: a light cone rising from a platform, faint
-  // projection rings, and a hint of a standing figure at the center.
+  // Classic hologram glyph: a base platform, an upward light cone, and
+  // horizontal scan rings crossing it.
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <ellipse cx={100} cy={168} rx={54} ry={10} {...commonStroke} />
-      <path d="M62 168 L86 66" {...commonStroke} />
-      <path d="M138 168 L114 66" {...commonStroke} />
-      <ellipse cx={100} cy={66} rx={24} ry={7} {...commonStroke} />
-      <ellipse cx={100} cy={112} rx={38} ry={9} strokeOpacity={0.5} {...commonStroke} />
-      <path d="M90 150 Q100 96 110 150" {...commonStroke} strokeOpacity={0.7} />
-      <circle cx={100} cy={80} r={7} {...commonStroke} />
-    </svg>
-  );
-}
-
-function Museums({ className }: ArtProps) {
-  // A framed artwork on the wall beside a plinth with a digital guide screen.
-  return (
-    <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <line x1={20} y1={172} x2={180} y2={172} {...commonStroke} />
-      <rect x={34} y={44} width={62} height={80} rx={2} {...commonStroke} />
-      <path d="M46 104 L66 78 L82 96 L96 74" strokeOpacity={0.6} {...commonStroke} />
-      <circle cx={80} cy={60} r={6} strokeOpacity={0.6} {...commonStroke} />
-      <rect x={128} y={110} width={38} height={62} rx={2} {...commonStroke} />
-      <rect x={136} y={122} width={22} height={30} rx={2} strokeOpacity={0.6} {...commonStroke} />
-    </svg>
-  );
-}
-
-function Exhibitions({ className }: ArtProps) {
-  // An exhibition booth: an angled canopy over a backdrop panel and counter.
-  return (
-    <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <path d="M36 76 L100 40 L164 76" {...commonStroke} />
-      <line x1={100} y1={40} x2={100} y2={22} {...commonStroke} />
-      <rect x={54} y={76} width={92} height={62} rx={2} strokeOpacity={0.6} {...commonStroke} />
-      <rect x={40} y={138} width={120} height={30} rx={2} {...commonStroke} />
-      <line x1={70} y1={138} x2={70} y2={168} strokeOpacity={0.5} {...commonStroke} />
-      <line x1={130} y1={138} x2={130} y2={168} strokeOpacity={0.5} {...commonStroke} />
+      <ellipse cx={100} cy={166} rx={56} ry={12} {...S} />
+      <path d="M64 166 L92 54" {...S} />
+      <path d="M136 166 L108 54" {...S} />
+      <ellipse cx={100} cy={54} rx={16} ry={5} {...S} />
+      <ellipse cx={100} cy={100} rx={34} ry={8} strokeOpacity={0.6} {...S} />
+      <ellipse cx={100} cy={132} rx={45} ry={10} strokeOpacity={0.6} {...S} />
     </svg>
   );
 }
 
 function Websites({ className }: ArtProps) {
-  // A browser window with traffic-light dots, an address bar, and content lines.
+  // A browser window: chrome bar with traffic-light dots + address bar.
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <rect x={28} y={46} width={144} height={108} rx={8} {...commonStroke} />
-      <line x1={28} y1={72} x2={172} y2={72} {...commonStroke} />
-      <circle cx={44} cy={59} r={3.5} {...commonStroke} />
-      <circle cx={56} cy={59} r={3.5} {...commonStroke} />
-      <circle cx={68} cy={59} r={3.5} {...commonStroke} />
-      <rect x={86} y={54} width={70} height={10} rx={5} strokeOpacity={0.5} {...commonStroke} />
-      <line x1={46} y1={92} x2={154} y2={92} strokeOpacity={0.6} {...commonStroke} />
-      <line x1={46} y1={110} x2={130} y2={110} strokeOpacity={0.6} {...commonStroke} />
-      <line x1={46} y1={128} x2={140} y2={128} strokeOpacity={0.6} {...commonStroke} />
+      <rect x={26} y={48} width={148} height={104} rx={8} {...S} />
+      <line x1={26} y1={76} x2={174} y2={76} {...S} />
+      <circle cx={44} cy={62} r={4} fill="currentColor" stroke="none" />
+      <circle cx={58} cy={62} r={4} fill="currentColor" stroke="none" />
+      <circle cx={72} cy={62} r={4} fill="currentColor" stroke="none" />
+      <line x1={46} y1={102} x2={154} y2={102} strokeOpacity={0.6} {...S} />
+      <line x1={46} y1={122} x2={126} y2={122} strokeOpacity={0.6} {...S} />
     </svg>
   );
 }
 
 function MobileApps({ className }: ArtProps) {
-  // A smartphone frame with a speaker notch, screen content lines, and a home bar.
+  // A phone: tall rounded rectangle, top speaker notch, bottom home indicator.
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <rect x={64} y={26} width={72} height={148} rx={14} {...commonStroke} />
-      <line x1={88} y1={40} x2={112} y2={40} strokeOpacity={0.6} {...commonStroke} />
-      <rect x={78} y={62} width={44} height={44} rx={6} strokeOpacity={0.6} {...commonStroke} />
-      <line x1={78} y1={122} x2={122} y2={122} strokeOpacity={0.5} {...commonStroke} />
-      <line x1={78} y1={134} x2={110} y2={134} strokeOpacity={0.5} {...commonStroke} />
-      <line x1={88} y1={160} x2={112} y2={160} {...commonStroke} />
+      <rect x={68} y={22} width={64} height={156} rx={16} {...S} />
+      <line x1={90} y1={38} x2={110} y2={38} {...S} />
+      <line x1={88} y1={164} x2={112} y2={164} {...S} />
+    </svg>
+  );
+}
+
+function Tablets({ className }: ArtProps) {
+  // A tablet: wider rounded rectangle, top camera dot, bottom circular home
+  // button — distinct silhouette from the phone.
+  return (
+    <svg viewBox="0 0 200 200" className={className} aria-hidden>
+      <rect x={48} y={30} width={104} height={140} rx={12} {...S} />
+      <circle cx={100} cy={44} r={2.5} fill="currentColor" stroke="none" />
+      <circle cx={100} cy={156} r={9} {...S} />
+    </svg>
+  );
+}
+
+function Laptops({ className }: ArtProps) {
+  // An open laptop: screen rectangle hinged to a wider flat keyboard deck.
+  return (
+    <svg viewBox="0 0 200 200" className={className} aria-hidden>
+      <rect x={62} y={40} width={76} height={92} rx={4} {...S} />
+      <path d="M36 158 L164 158 L150 132 L50 132 Z" {...S} />
     </svg>
   );
 }
 
 function Kiosks({ className }: ArtProps) {
-  // A freestanding kiosk: a screen at eye level on a slim stand with a base.
+  // A freestanding kiosk: a screen mounted on a slim pole with a flat base.
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <rect x={62} y={38} width={76} height={86} rx={6} {...commonStroke} />
-      <line x1={78} y1={58} x2={122} y2={58} strokeOpacity={0.5} {...commonStroke} />
-      <line x1={78} y1={72} x2={110} y2={72} strokeOpacity={0.5} {...commonStroke} />
-      <line x1={100} y1={124} x2={100} y2={160} {...commonStroke} />
-      <ellipse cx={100} cy={168} rx={36} ry={8} {...commonStroke} />
+      <rect x={58} y={26} width={84} height={92} rx={6} {...S} />
+      <line x1={78} y1={46} x2={122} y2={46} strokeOpacity={0.6} {...S} />
+      <line x1={100} y1={118} x2={100} y2={156} {...S} />
+      <line x1={70} y1={172} x2={130} y2={172} {...S} />
     </svg>
   );
 }
 
 function TouchScreens({ className }: ArtProps) {
-  // A screen with a fingertip mid-tap and ripple rings.
+  // A screen frame with a fingertip mid-tap and a ripple ring.
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <rect x={34} y={40} width={132} height={98} rx={8} {...commonStroke} />
-      <circle cx={112} cy={92} r={14} strokeOpacity={0.45} {...commonStroke} />
-      <circle cx={112} cy={92} r={24} strokeOpacity={0.25} {...commonStroke} />
-      <path d="M112 150 L112 176 M112 176 L100 164 M112 176 L124 164" {...commonStroke} />
+      <rect x={30} y={30} width={140} height={100} rx={8} {...S} />
+      <circle cx={110} cy={80} r={22} strokeOpacity={0.5} {...S} />
+      <path d="M110 154 L110 178" {...S} />
+      <path d="M110 178 L96 166" {...S} />
+      <path d="M110 178 L124 166" {...S} />
     </svg>
   );
 }
 
 function LedWalls({ className }: ArtProps) {
-  // A tiled panel wall (grid of LED modules) with a small figure for scale.
+  // A modular video wall: a grid of panels with a small figure for scale.
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden>
-      <rect x={24} y={30} width={152} height={92} rx={4} {...commonStroke} />
-      <line x1={62} y1={30} x2={62} y2={122} strokeOpacity={0.4} {...commonStroke} />
-      <line x1={100} y1={30} x2={100} y2={122} strokeOpacity={0.4} {...commonStroke} />
-      <line x1={138} y1={30} x2={138} y2={122} strokeOpacity={0.4} {...commonStroke} />
-      <line x1={24} y1={76} x2={176} y2={76} strokeOpacity={0.4} {...commonStroke} />
-      <circle cx={100} cy={146} r={9} strokeOpacity={0.6} {...commonStroke} />
-      <path d="M84 174 Q100 152 116 174" strokeOpacity={0.6} {...commonStroke} />
+      <rect x={20} y={26} width={160} height={96} rx={4} {...S} />
+      <line x1={60} y1={26} x2={60} y2={122} {...S} />
+      <line x1={100} y1={26} x2={100} y2={122} {...S} />
+      <line x1={140} y1={26} x2={140} y2={122} {...S} />
+      <line x1={20} y1={74} x2={180} y2={74} {...S} />
+      <circle cx={100} cy={148} r={10} {...S} />
+      <path d="M84 176 Q100 154 116 176" {...S} />
+    </svg>
+  );
+}
+
+function Projectors({ className }: ArtProps) {
+  // A projector body with a lens and an expanding beam of light.
+  return (
+    <svg viewBox="0 0 200 200" className={className} aria-hidden>
+      <rect x={30} y={80} width={70} height={40} rx={8} {...S} />
+      <circle cx={100} cy={100} r={16} {...S} />
+      <path d="M116 84 L172 56" strokeOpacity={0.7} {...S} />
+      <path d="M116 116 L172 144" strokeOpacity={0.7} {...S} />
+      <line x1={172} y1={56} x2={172} y2={144} strokeOpacity={0.4} {...S} />
     </svg>
   );
 }
 
 const ART: Record<string, (props: ArtProps) => ReactElement> = {
   holograms: Holograms,
-  museums: Museums,
-  exhibitions: Exhibitions,
   websites: Websites,
   "mobile-apps": MobileApps,
+  tablets: Tablets,
+  laptops: Laptops,
   kiosks: Kiosks,
   "touch-screens": TouchScreens,
   "led-walls": LedWalls,
+  projectors: Projectors,
 };
 
 export default function DeploymentArt({

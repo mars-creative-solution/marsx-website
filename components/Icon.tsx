@@ -37,6 +37,9 @@ import {
   Hand,
   Tv,
   Orbit,
+  Tablet,
+  Laptop,
+  Projector,
   type LucideIcon,
 } from "lucide-react";
 import type { IconKey } from "@/lib/content";
@@ -80,6 +83,9 @@ const ICONS: Record<IconKey, LucideIcon> = {
   hand: Hand,
   tv: Tv,
   orbit: Orbit,
+  tablet: Tablet,
+  laptop: Laptop,
+  projector: Projector,
 };
 
 type IconProps = {
