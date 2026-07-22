@@ -47,11 +47,10 @@ export default function NasserStage({
       {/* Particles converging into him */}
       <ParticleField count={particleCount} />
 
-      {/* Nasser — natural-skinned anchor with a holographic silhouette rim.
-          Internal glow off; the stage's key light provides the depth light. */}
+      {/* Nasser — a still portrait with a soft silhouette rim. No idle motion;
+          all movement lives in the environment layers around him. Internal glow
+          off; the stage's key light provides the depth light. */}
       <NasserFigure
-        breathe
-        drift
         hologram
         glow={false}
         priority={priority}
