@@ -5,12 +5,13 @@ import { fadeUp, inView, stagger, staggerItem } from "@/lib/motion";
 import { DEPLOYMENT_OPTIONS } from "@/lib/content";
 import DeploymentArt from "./DeploymentArt";
 
-// Bento sizing: Holograms is the anchor tile (wide + tall); Museums and
-// Exhibitions are wide; everything else is a standard tile. Kept separate from
-// customization — this section is only about where an AI human can live.
+// Bento sizing: Holograms and LED Walls are the two anchor tiles (the
+// largest-format physical installations); everything else is a standard
+// tile. Kept separate from customization — this section is only about the
+// screens/devices/installations an AI human can live on.
 function tileSpan(id: string) {
   if (id === "holograms") return "sm:col-span-2 lg:col-span-2 lg:row-span-2";
-  if (id === "museums" || id === "exhibitions") return "sm:col-span-2 lg:col-span-2";
+  if (id === "led-walls") return "sm:col-span-2 lg:col-span-2";
   return "col-span-1";
 }
 
@@ -31,11 +32,11 @@ export default function DeployAnywhere() {
             DEPLOY ANYWHERE
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
-            Living in physical spaces, not just on screens.
+            One AI human. Every screen.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-mist/60">
-            A single AI human, deployed wherever your audience meets you —
-            from a holographic pavilion to a phone in their hand.
+            Deploy the same AI human across websites, mobile devices,
+            immersive displays, and physical installations.
           </p>
         </motion.div>
 
@@ -55,13 +56,14 @@ export default function DeployAnywhere() {
               )} ${opt.featured ? "lg:p-8" : ""}`}
             >
               {/* Background line-art illustration — secondary to the text,
-                  low-contrast monochrome, instantly reads the scenario. */}
+                  but clear and literal enough to read the device/surface at a
+                  glance, without needing the label. */}
               <DeploymentArt
                 id={opt.id}
-                className={`pointer-events-none absolute bottom-0 right-0 transition-opacity duration-300 group-hover:opacity-[0.16] ${
+                className={`pointer-events-none absolute bottom-0 right-0 transition-opacity duration-300 ${
                   opt.featured
-                    ? "h-40 w-40 text-accent/[0.09] lg:h-52 lg:w-52"
-                    : "h-28 w-28 text-mist/[0.09]"
+                    ? "h-40 w-40 text-accent/[0.22] group-hover:opacity-[0.32] lg:h-52 lg:w-52"
+                    : "h-28 w-28 text-mist/[0.28] group-hover:opacity-[0.4]"
                 }`}
               />
 

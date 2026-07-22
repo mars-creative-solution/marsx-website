@@ -41,7 +41,10 @@ export type IconKey =
   | "monitor"
   | "hand"
   | "tv"
-  | "orbit";
+  | "orbit"
+  | "tablet"
+  | "laptop"
+  | "projector";
 
 export const SITE = {
   name: "MarsX AI Solutions",
@@ -407,30 +410,18 @@ export type DeploymentOption = {
   featured?: boolean;
 };
 
-// Physical and digital surfaces an AI human can be deployed to. Order and
-// `featured` flags drive the bento layout in components/home/DeployAnywhere.tsx —
-// Holograms, Museums, and Exhibitions get emphasis per the brief, to make clear
-// these AI humans live in physical spaces, not just on screens.
+// Screens, devices, and physical installations the same AI human can be
+// deployed to. This is deliberately about the surface/medium, not an industry
+// or use case (see the "Meet the Ambassadors" section for that framing). Order
+// and `featured` flags drive the bento layout in
+// components/home/DeployAnywhere.tsx — Holograms and LED Walls get emphasis as
+// the two largest-format physical installations.
 export const DEPLOYMENT_OPTIONS: DeploymentOption[] = [
   {
     id: "holograms",
     icon: "orbit",
     title: "Holograms",
-    description: "Freestanding holographic presenters for flagship spaces.",
-    featured: true,
-  },
-  {
-    id: "museums",
-    icon: "palette",
-    title: "Museums",
-    description: "Guided storytelling woven into permanent exhibits.",
-    featured: true,
-  },
-  {
-    id: "exhibitions",
-    icon: "presentation",
-    title: "Exhibitions",
-    description: "Interactive presenters for events, expos, and conferences.",
+    description: "Freestanding holographic projections for flagship spaces.",
     featured: true,
   },
   {
@@ -444,6 +435,18 @@ export const DEPLOYMENT_OPTIONS: DeploymentOption[] = [
     icon: "smartphone",
     title: "Mobile Apps",
     description: "Native iOS and Android integration.",
+  },
+  {
+    id: "tablets",
+    icon: "tablet",
+    title: "Tablets",
+    description: "Portable, hands-on sessions for guided experiences.",
+  },
+  {
+    id: "laptops",
+    icon: "laptop",
+    title: "Laptops",
+    description: "Full desktop and browser-based experiences.",
   },
   {
     id: "kiosks",
@@ -462,6 +465,13 @@ export const DEPLOYMENT_OPTIONS: DeploymentOption[] = [
     icon: "tv",
     title: "LED Walls",
     description: "Large-format displays for immersive public installations.",
+    featured: true,
+  },
+  {
+    id: "projectors",
+    icon: "projector",
+    title: "Projectors",
+    description: "Projected onto any surface for large-scale visual presence.",
   },
 ];
 
