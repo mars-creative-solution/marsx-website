@@ -84,7 +84,7 @@ export default function NasserFigure({
       ) : useImage ? (
         <Image
           src={media.image}
-          alt={`${name} — ${role}`}
+          alt={role ? `${name} — ${role}` : name}
           fill
           priority={priority}
           sizes="(max-width: 1024px) 90vw, 45vw"
@@ -99,9 +99,11 @@ export default function NasserFigure({
             <p className="font-display text-lg font-semibold text-mist/60">
               {name}
             </p>
-            <p className="mt-1 text-xs uppercase tracking-[0.2em] text-mist/30">
-              {role}
-            </p>
+            {role && (
+              <p className="mt-1 text-xs uppercase tracking-[0.2em] text-mist/30">
+                {role}
+              </p>
+            )}
           </div>
           <p className="mt-2 max-w-[16rem] text-[0.7rem] leading-relaxed text-mist/20">
             Temporary placeholder — add a transparent render at{" "}
