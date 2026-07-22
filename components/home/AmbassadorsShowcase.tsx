@@ -6,13 +6,11 @@ import { AMBASSADORS } from "@/lib/content";
 import NasserFigure from "./NasserFigure";
 
 /**
- * "Meet the Ambassadors" — a premium 3-up gallery proving MarsX is a platform
- * for creating many AI humans, not a single fixed avatar. Deliberately generic
- * roles/descriptions (see AMBASSADOR_ROLE/AMBASSADOR_DESCRIPTION in
- * lib/content.ts) — the point is that any of them can be personalized to any
- * industry, not that each is locked to one. Each figure is a still portrait (no
- * idle motion); gallery-style nameplate below. No Listening/Thinking/Responding
- * concept here — that framing belongs to a single demo, not a platform showcase.
+ * "Meet the Ambassadors" — a premium, scalable gallery proving MarsX is a
+ * platform for creating many AI humans, not a single fixed avatar. All
+ * messaging lives in the section header; each card shows only a still portrait
+ * + name, so the section reads as a range on display rather than a set of
+ * separate profile cards — and scales cleanly as more avatars are added.
  */
 export default function AmbassadorsShowcase() {
   return (
@@ -34,12 +32,12 @@ export default function AmbassadorsShowcase() {
             One platform. Many AI humans.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-mist/60">
-            One platform, capable of creating countless AI humans — every
-            detail personalized to fit any industry.
+            Every ambassador is built on the same platform, shaped into a
+            distinct persona for a different industry and audience.
           </p>
         </motion.div>
 
-        {/* Avatar gallery */}
+        {/* Avatar gallery — portrait + name only; no per-card subtitle */}
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -57,21 +55,11 @@ export default function AmbassadorsShowcase() {
                 hologram
                 media={a.media}
                 name={a.name}
-                role={a.role}
                 className="aspect-[3/4] w-full max-w-xs"
               />
-              <div className="mt-5 flex flex-col items-center gap-2 text-center">
-                <span className="font-display text-sm font-semibold tracking-[0.3em] text-mist/85">
-                  {a.name.toUpperCase()}
-                </span>
-                <span className="h-px w-8 bg-accent/50" />
-                <span className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-mist/45">
-                  {a.role}
-                </span>
-                <p className="mt-2 max-w-[15rem] text-xs leading-relaxed text-mist/50">
-                  {a.description}
-                </p>
-              </div>
+              <span className="mt-5 font-display text-sm font-semibold tracking-[0.3em] text-mist/85">
+                {a.name.toUpperCase()}
+              </span>
             </motion.div>
           ))}
         </motion.div>

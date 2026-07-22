@@ -298,18 +298,13 @@ export const NASSER: {
 // The avatar roster shown in the "Meet the Ambassadors" gallery
 // (components/home/AmbassadorsShowcase.tsx). Each entry reuses the pluggable
 // NasserMedia contract, so a transparent PNG or Unreal loop drops in per avatar
-// with no code change. Deliberately generic role + a single shared description
-// across all three — the section's point is "one platform, many AI humans,"
-// not fixed characters tied to a specific industry or use case.
-export const AMBASSADOR_ROLE = "Enterprise AI Human";
-export const AMBASSADOR_DESCRIPTION =
-  "Personalize appearance, voice, behavior, knowledge, and deployment to fit any industry.";
-
+// with no code change. Deliberately just a name below each portrait — no
+// per-card role or description — so the section reads as a scalable range of
+// AI humans rather than a set of separate profile cards. The platform-level
+// message lives in the section header instead (see AmbassadorsShowcase).
 export type Ambassador = {
   id: string;
   name: string;
-  role: string;
-  description: string;
   media: NasserMedia;
 };
 
@@ -317,22 +312,16 @@ export const AMBASSADORS: Ambassador[] = [
   {
     id: "nasser",
     name: NASSER.name,
-    role: AMBASSADOR_ROLE,
-    description: AMBASSADOR_DESCRIPTION,
     media: NASSER.media,
   },
   {
     id: "julia",
     name: "Julia",
-    role: AMBASSADOR_ROLE,
-    description: AMBASSADOR_DESCRIPTION,
     media: { available: true, image: "/julia.png" },
   },
   {
     id: "jhonny",
     name: "Jhonny",
-    role: AMBASSADOR_ROLE,
-    description: AMBASSADOR_DESCRIPTION,
     media: { available: true, image: "/jhonny.png" },
   },
 ];
