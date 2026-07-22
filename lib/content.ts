@@ -281,10 +281,10 @@ export const NASSER: {
   media: NasserMedia;
 } = {
   name: "Nasser",
-  role: "Government & Smart Services Ambassador",
+  role: "Enterprise AI Human",
   eyebrow: "MEET NASSER",
   intro:
-    "A bilingual Arabic and English AI ambassador designed for government entities, smart city services, and public institutions — engineered for governments, exhibitions, museums, and flagship spaces.",
+    "A lifelike, fully customizable AI human — appearance, voice, behavior, knowledge, and deployment all personalized to fit any industry.",
   media: {
     // A transparent nasser.png is deployed on the server. If the file is ever
     // missing, NasserFigure gracefully falls back to the placeholder.
@@ -298,14 +298,13 @@ export const NASSER: {
 // The avatar roster shown in the "Meet the Ambassadors" gallery
 // (components/home/AmbassadorsShowcase.tsx). Each entry reuses the pluggable
 // NasserMedia contract, so a transparent PNG or Unreal loop drops in per avatar
-// with no code change. Each persona deliberately spans a different industry —
-// the point of this section isn't just different faces, it's proof MarsX can
-// build AI humans for entirely different use cases.
-//
-// Note: Layla's and Omar's renders are deployed under their original working
-// filenames (/julia.png, /jhonny.png) from an earlier upload; only the
-// displayed name/role changed here. Rename the files on the server (and
-// update the paths below) if you want them to match the persona names.
+// with no code change. Deliberately generic role + a single shared description
+// across all three — the section's point is "one platform, many AI humans,"
+// not fixed characters tied to a specific industry or use case.
+export const AMBASSADOR_ROLE = "Enterprise AI Human";
+export const AMBASSADOR_DESCRIPTION =
+  "Personalize appearance, voice, behavior, knowledge, and deployment to fit any industry.";
+
 export type Ambassador = {
   id: string;
   name: string;
@@ -318,25 +317,22 @@ export const AMBASSADORS: Ambassador[] = [
   {
     id: "nasser",
     name: NASSER.name,
-    role: NASSER.role,
-    description:
-      "Bilingual Arabic and English AI ambassador designed for government entities, smart city services, and public institutions.",
+    role: AMBASSADOR_ROLE,
+    description: AMBASSADOR_DESCRIPTION,
     media: NASSER.media,
   },
   {
-    id: "layla",
-    name: "Layla",
-    role: "Hospitality & Luxury Experiences Ambassador",
-    description:
-      "AI host for hotels, retail experiences, luxury brands, and customer engagement.",
+    id: "julia",
+    name: "Julia",
+    role: AMBASSADOR_ROLE,
+    description: AMBASSADOR_DESCRIPTION,
     media: { available: true, image: "/julia.png" },
   },
   {
-    id: "omar",
-    name: "Omar",
-    role: "Museums, Events & Exhibitions Ambassador",
-    description:
-      "AI guide for museums, exhibitions, conferences, and cultural experiences.",
+    id: "jhonny",
+    name: "Jhonny",
+    role: AMBASSADOR_ROLE,
+    description: AMBASSADOR_DESCRIPTION,
     media: { available: true, image: "/jhonny.png" },
   },
 ];

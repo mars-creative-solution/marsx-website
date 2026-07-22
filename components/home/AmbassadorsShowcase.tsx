@@ -6,11 +6,13 @@ import { AMBASSADORS } from "@/lib/content";
 import NasserFigure from "./NasserFigure";
 
 /**
- * "Meet the Ambassadors" — a premium 3-up gallery proving MarsX builds AI
- * humans for entirely different industries and use cases, not a single avatar.
- * Each figure is a still portrait (no idle motion); gallery-style nameplate +
- * persona description below. No Listening/Thinking/Responding concept here —
- * that framing belongs to a single demo, not a platform showcase.
+ * "Meet the Ambassadors" — a premium 3-up gallery proving MarsX is a platform
+ * for creating many AI humans, not a single fixed avatar. Deliberately generic
+ * roles/descriptions (see AMBASSADOR_ROLE/AMBASSADOR_DESCRIPTION in
+ * lib/content.ts) — the point is that any of them can be personalized to any
+ * industry, not that each is locked to one. Each figure is a still portrait (no
+ * idle motion); gallery-style nameplate below. No Listening/Thinking/Responding
+ * concept here — that framing belongs to a single demo, not a platform showcase.
  */
 export default function AmbassadorsShowcase() {
   return (
@@ -32,8 +34,8 @@ export default function AmbassadorsShowcase() {
             One platform. Many AI humans.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-mist/60">
-            Every ambassador is built on the same platform, shaped into a
-            distinct persona for a different industry and audience.
+            One platform, capable of creating countless AI humans — every
+            detail personalized to fit any industry.
           </p>
         </motion.div>
 
