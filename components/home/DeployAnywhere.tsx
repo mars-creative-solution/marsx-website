@@ -1,0 +1,86 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { fadeUp, inView, stagger, staggerItem } from "@/lib/motion";
+import { DEPLOYMENT_OPTIONS } from "@/lib/content";
+import Icon from "../Icon";
+
+// Bento sizing: Holograms is the anchor tile (wide + tall); Museums and
+// Exhibitions are wide; everything else is a standard tile. Kept separate from
+// customization — this section is only about where an AI human can live.
+function tileSpan(id: string) {
+  if (id === "holograms") return "sm:col-span-2 lg:col-span-2 lg:row-span-2";
+  if (id === "museums" || id === "exhibitions") return "sm:col-span-2 lg:col-span-2";
+  return "col-span-1";
+}
+
+export default function DeployAnywhere() {
+  return (
+    <section className="relative overflow-hidden bg-black py-24 lg:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-96 w-[640px] -translate-x-1/2 rounded-full bg-accent/10 blur-[130px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={inView}
+          className="mx-auto max-w-2xl text-center"
+        >
+          <span className="text-xs font-semibold tracking-[0.3em] text-accent">
+            DEPLOY ANYWHERE
+          </span>
+          <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
+            Living in physical spaces, not just on screens.
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-mist/60">
+            A single AI human, deployed wherever your audience meets you —
+            from a holographic pavilion to a phone in their hand.
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={inView}
+          className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[10rem] lg:grid-flow-dense"
+        >
+          {DEPLOYMENT_OPTIONS.map((opt) => (
+            <motion.div
+              key={opt.id}
+              variants={staggerItem}
+              className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-mist/10 bg-mist/[0.02] p-6 transition-all duration-300 hover:border-accent/30 hover:bg-mist/[0.04] ${tileSpan(
+                opt.id,
+              )} ${opt.featured ? "lg:p-8" : ""}`}
+            >
+              <div
+                className={`grid place-items-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-black ${
+                  opt.featured ? "h-14 w-14" : "h-11 w-11"
+                }`}
+              >
+                <Icon name={opt.icon} size={opt.featured ? 26 : 20} />
+              </div>
+              <div className="mt-6">
+                <h3
+                  className={`font-display font-semibold text-mist ${
+                    opt.featured ? "text-2xl" : "text-base"
+                  }`}
+                >
+                  {opt.title}
+                </h3>
+                <p
+                  className={`mt-2 leading-relaxed text-mist/50 ${
+                    opt.featured ? "text-sm" : "text-xs"
+                  }`}
+                >
+                  {opt.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}

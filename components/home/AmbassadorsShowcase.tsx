@@ -2,15 +2,15 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, inView, stagger, staggerItem } from "@/lib/motion";
-import { AMBASSADORS, NASSER_STATES } from "@/lib/content";
-import Icon from "../Icon";
+import { AMBASSADORS } from "@/lib/content";
 import NasserFigure from "./NasserFigure";
 
 /**
- * "Meet the Ambassadors" — a premium 3-up gallery of the avatar roster (blended
- * figures + gallery-style nameplates), followed by a slim "how a conversation
- * flows" band (listen → think → respond). Replaces the old single-Nasser
- * section so the flagship isn't shown twice as a repeat, and shows range.
+ * "Meet the Ambassadors" — a premium 3-up gallery proving MarsX builds AI
+ * humans for entirely different industries and use cases, not a single avatar.
+ * Each figure is a still portrait (no idle motion); gallery-style nameplate +
+ * persona description below. No Listening/Thinking/Responding concept here —
+ * that framing belongs to a single demo, not a platform showcase.
  */
 export default function AmbassadorsShowcase() {
   return (
@@ -29,11 +29,11 @@ export default function AmbassadorsShowcase() {
             THE AMBASSADORS
           </span>
           <h2 className="mt-4 font-display text-3xl font-bold text-mist sm:text-4xl lg:text-5xl">
-            A cast of lifelike AI ambassadors.
+            One platform. Many AI humans.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-mist/60">
-            Distinct faces and personas — each engineered to listen, think, and
-            respond in real time, in Arabic and English.
+            Every ambassador is built on the same platform, shaped into a
+            distinct persona for a different industry and audience.
           </p>
         </motion.div>
 
@@ -66,42 +66,12 @@ export default function AmbassadorsShowcase() {
                 <span className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-mist/45">
                   {a.role}
                 </span>
+                <p className="mt-2 max-w-[15rem] text-xs leading-relaxed text-mist/50">
+                  {a.description}
+                </p>
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Slim "how a conversation flows" band */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={inView}
-          className="mx-auto mt-20 max-w-4xl"
-        >
-          <p className="text-center text-xs font-semibold tracking-[0.3em] text-mist/40">
-            HOW EVERY CONVERSATION FLOWS
-          </p>
-          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {NASSER_STATES.map((s, i) => (
-              <div
-                key={s.key}
-                className="flex items-start gap-3 rounded-2xl border border-mist/10 bg-mist/[0.02] p-5"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/10 text-accent">
-                  <Icon name={s.icon} size={18} />
-                </span>
-                <div>
-                  <p className="font-display text-sm font-semibold text-mist">
-                    {i + 1}. {s.label}
-                  </p>
-                  <p className="mt-1 text-xs leading-relaxed text-mist/55">
-                    {s.caption}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>

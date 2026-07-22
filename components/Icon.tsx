@@ -29,6 +29,14 @@ import {
   Shirt,
   Smile,
   Image as ImageIcon,
+  AudioWaveform,
+  Compass,
+  Globe,
+  Smartphone,
+  Monitor,
+  Hand,
+  Tv,
+  Orbit,
   type LucideIcon,
 } from "lucide-react";
 import type { IconKey } from "@/lib/content";
@@ -64,6 +72,14 @@ const ICONS: Record<IconKey, LucideIcon> = {
   shirt: Shirt,
   smile: Smile,
   image: ImageIcon,
+  waveform: AudioWaveform,
+  compass: Compass,
+  globe: Globe,
+  smartphone: Smartphone,
+  monitor: Monitor,
+  hand: Hand,
+  tv: Tv,
+  orbit: Orbit,
 };
 
 type IconProps = {
