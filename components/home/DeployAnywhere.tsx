@@ -51,23 +51,17 @@ export default function DeployAnywhere() {
             <motion.div
               key={opt.id}
               variants={staggerItem}
-              className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-mist/10 bg-mist/[0.02] p-6 transition-all duration-300 hover:border-accent/25 hover:bg-mist/[0.04] ${tileSpan(
+              className={`group relative flex items-stretch gap-4 overflow-hidden rounded-2xl border border-mist/10 bg-mist/[0.02] p-6 transition-all duration-300 hover:border-accent/25 hover:bg-mist/[0.04] ${tileSpan(
                 opt.id,
               )} ${opt.featured ? "lg:p-8" : ""}`}
             >
-              {/* Background line-art illustration — secondary to the text,
-                  but clear and literal enough to read the device/surface at a
-                  glance, without needing the label. */}
-              <DeploymentArt
-                id={opt.id}
-                className={`pointer-events-none absolute bottom-0 right-0 transition-opacity duration-300 ${
-                  opt.featured
-                    ? "h-40 w-40 text-accent/[0.22] group-hover:opacity-[0.32] lg:h-52 lg:w-52"
-                    : "h-28 w-28 text-mist/[0.28] group-hover:opacity-[0.4]"
+              {/* Text zone — a clean, fixed ~50% of the card so it never
+                  competes with the illustration for space. */}
+              <div
+                className={`flex flex-col justify-center ${
+                  opt.featured ? "w-[45%]" : "w-1/2"
                 }`}
-              />
-
-              <div className="relative z-10">
+              >
                 <h3
                   className={`font-display font-semibold text-mist ${
                     opt.featured ? "text-2xl" : "text-base"
@@ -76,12 +70,31 @@ export default function DeployAnywhere() {
                   {opt.title}
                 </h3>
                 <p
-                  className={`mt-2 max-w-[16rem] leading-relaxed text-mist/50 ${
+                  className={`mt-2 leading-relaxed text-mist/50 ${
                     opt.featured ? "text-sm" : "text-xs"
                   }`}
                 >
                   {opt.description}
                 </p>
+              </div>
+
+              {/* Illustration zone — a separate panel (divider + faint tint)
+                  rather than a background wash, so it reads as part of the
+                  layout instead of floating behind the text. Larger tiles get
+                  slightly more width, per the brief. */}
+              <div
+                className={`flex min-h-[5.5rem] items-center justify-center rounded-xl border-l border-mist/10 bg-mist/[0.015] pl-4 ${
+                  opt.featured ? "w-[55%]" : "w-1/2"
+                }`}
+              >
+                <DeploymentArt
+                  id={opt.id}
+                  className={`h-full max-h-28 w-full transition-opacity duration-300 group-hover:opacity-[0.55] ${
+                    opt.featured
+                      ? "max-h-32 text-accent/30 lg:max-h-40"
+                      : "text-mist/35"
+                  }`}
+                />
               </div>
             </motion.div>
           ))}
