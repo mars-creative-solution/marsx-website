@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, inView, stagger, staggerItem } from "@/lib/motion";
 import { DEPLOYMENT_OPTIONS } from "@/lib/content";
-import Icon from "../Icon";
+import DeploymentArt from "./DeploymentArt";
 
 // Bento sizing: Holograms is the anchor tile (wide + tall); Museums and
 // Exhibitions are wide; everything else is a standard tile. Kept separate from
@@ -50,18 +50,22 @@ export default function DeployAnywhere() {
             <motion.div
               key={opt.id}
               variants={staggerItem}
-              className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-mist/10 bg-mist/[0.02] p-6 transition-all duration-300 hover:border-accent/30 hover:bg-mist/[0.04] ${tileSpan(
+              className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-mist/10 bg-mist/[0.02] p-6 transition-all duration-300 hover:border-accent/25 hover:bg-mist/[0.04] ${tileSpan(
                 opt.id,
               )} ${opt.featured ? "lg:p-8" : ""}`}
             >
-              <div
-                className={`grid place-items-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-black ${
-                  opt.featured ? "h-14 w-14" : "h-11 w-11"
+              {/* Background line-art illustration — secondary to the text,
+                  low-contrast monochrome, instantly reads the scenario. */}
+              <DeploymentArt
+                id={opt.id}
+                className={`pointer-events-none absolute bottom-0 right-0 transition-opacity duration-300 group-hover:opacity-[0.16] ${
+                  opt.featured
+                    ? "h-40 w-40 text-accent/[0.09] lg:h-52 lg:w-52"
+                    : "h-28 w-28 text-mist/[0.09]"
                 }`}
-              >
-                <Icon name={opt.icon} size={opt.featured ? 26 : 20} />
-              </div>
-              <div className="mt-6">
+              />
+
+              <div className="relative z-10">
                 <h3
                   className={`font-display font-semibold text-mist ${
                     opt.featured ? "text-2xl" : "text-base"
@@ -70,7 +74,7 @@ export default function DeployAnywhere() {
                   {opt.title}
                 </h3>
                 <p
-                  className={`mt-2 leading-relaxed text-mist/50 ${
+                  className={`mt-2 max-w-[16rem] leading-relaxed text-mist/50 ${
                     opt.featured ? "text-sm" : "text-xs"
                   }`}
                 >
