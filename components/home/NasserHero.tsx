@@ -17,11 +17,12 @@ export default function NasserHero() {
       <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-charcoal/60 blur-[80px]" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-10 lg:px-10">
-        {/* Nasser — first on mobile (top), right on desktop */}
+        {/* Nasser — still portrait; fades in without moving. First on mobile
+            (top), right on desktop. */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: EASE }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, ease: EASE }}
           className="order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none"
         >
           <NasserStage
@@ -41,7 +42,7 @@ export default function NasserHero() {
           >
             <OrbitLogo size={44} spinDuration={28} glow={false} />
             <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium tracking-[0.25em] text-mist/70">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
               AI DIGITAL HUMANS
             </span>
           </motion.div>

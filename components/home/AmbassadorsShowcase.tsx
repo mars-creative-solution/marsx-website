@@ -52,7 +52,6 @@ export default function AmbassadorsShowcase() {
               className="flex flex-col items-center"
             >
               <NasserFigure
-                breathe
                 hologram
                 media={a.media}
                 name={a.name}
