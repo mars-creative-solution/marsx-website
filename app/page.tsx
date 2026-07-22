@@ -1,24 +1,22 @@
 import NasserHero from "@/components/home/NasserHero";
-import AboutPreview from "@/components/home/AboutPreview";
 import AmbassadorsShowcase from "@/components/home/AmbassadorsShowcase";
-import PlatformPreview from "@/components/home/PlatformPreview";
 import CustomizeSection from "@/components/home/CustomizeSection";
-import HowItWorks from "@/components/home/HowItWorks";
+import DeployAnywhere from "@/components/home/DeployAnywhere";
 import SolutionsPreview from "@/components/home/SolutionsPreview";
 import IndustriesPreview from "@/components/home/IndustriesPreview";
+import HowItWorks from "@/components/home/HowItWorks";
 import ContactCTA from "@/components/ContactCTA";
 
 export default function Home() {
   return (
     <>
       <NasserHero />
-      <AboutPreview />
       <AmbassadorsShowcase />
-      <PlatformPreview />
       <CustomizeSection />
-      <HowItWorks />
+      <DeployAnywhere />
       <SolutionsPreview />
       <IndustriesPreview />
+      <HowItWorks />
       <ContactCTA />
     </>
   );

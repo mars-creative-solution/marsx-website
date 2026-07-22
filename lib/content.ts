@@ -33,7 +33,15 @@ export type IconKey =
   | "audio-lines"
   | "shirt"
   | "smile"
-  | "image";
+  | "image"
+  | "waveform"
+  | "compass"
+  | "globe"
+  | "smartphone"
+  | "monitor"
+  | "hand"
+  | "tv"
+  | "orbit";
 
 export const SITE = {
   name: "MarsX AI Solutions",
@@ -273,10 +281,10 @@ export const NASSER: {
   media: NasserMedia;
 } = {
   name: "Nasser",
-  role: "AI Digital Ambassador",
+  role: "Government & Smart Services Ambassador",
   eyebrow: "MEET NASSER",
   intro:
-    "A lifelike Emirati AI presenter who listens, understands, and responds in Arabic and English — engineered for governments, exhibitions, museums, and flagship spaces.",
+    "A bilingual Arabic and English AI ambassador designed for government entities, smart city services, and public institutions — engineered for governments, exhibitions, museums, and flagship spaces.",
   media: {
     // A transparent nasser.png is deployed on the server. If the file is ever
     // missing, NasserFigure gracefully falls back to the placeholder.
@@ -290,13 +298,19 @@ export const NASSER: {
 // The avatar roster shown in the "Meet the Ambassadors" gallery
 // (components/home/AmbassadorsShowcase.tsx). Each entry reuses the pluggable
 // NasserMedia contract, so a transparent PNG or Unreal loop drops in per avatar
-// with no code change. All three expect transparent renders on the server at
-// the paths below; if a file is missing, NasserFigure falls back to the
-// placeholder gracefully.
+// with no code change. Each persona deliberately spans a different industry —
+// the point of this section isn't just different faces, it's proof MarsX can
+// build AI humans for entirely different use cases.
+//
+// Note: Layla's and Omar's renders are deployed under their original working
+// filenames (/julia.png, /jhonny.png) from an earlier upload; only the
+// displayed name/role changed here. Rename the files on the server (and
+// update the paths below) if you want them to match the persona names.
 export type Ambassador = {
   id: string;
   name: string;
   role: string;
+  description: string;
   media: NasserMedia;
 };
 
@@ -305,18 +319,24 @@ export const AMBASSADORS: Ambassador[] = [
     id: "nasser",
     name: NASSER.name,
     role: NASSER.role,
+    description:
+      "Bilingual Arabic and English AI ambassador designed for government entities, smart city services, and public institutions.",
     media: NASSER.media,
   },
   {
-    id: "julia",
-    name: "Julia",
-    role: "AI Digital Ambassador",
+    id: "layla",
+    name: "Layla",
+    role: "Hospitality & Luxury Experiences Ambassador",
+    description:
+      "AI host for hotels, retail experiences, luxury brands, and customer engagement.",
     media: { available: true, image: "/julia.png" },
   },
   {
-    id: "jhonny",
-    name: "Jhonny",
-    role: "AI Digital Ambassador",
+    id: "omar",
+    name: "Omar",
+    role: "Museums, Events & Exhibitions Ambassador",
+    description:
+      "AI guide for museums, exhibitions, conferences, and cultural experiences.",
     media: { available: true, image: "/jhonny.png" },
   },
 ];
@@ -333,79 +353,130 @@ export const NASSER_HUD: HudToken[] = [
   { text: "الذكاء الاصطناعي", lang: "ar" },
 ];
 
-export type NasserState = {
-  key: string;
-  icon: IconKey;
-  label: string;
-  caption: string;
-};
-
-export const NASSER_STATES: NasserState[] = [
-  {
-    key: "listening",
-    icon: "mic",
-    label: "Listening",
-    caption:
-      "Real-time speech recognition captures each question naturally, in Arabic or English.",
-  },
-  {
-    key: "thinking",
-    icon: "brain",
-    label: "Thinking",
-    caption:
-      "Reasoning over your organization's knowledge through the SABR foundation for an accurate answer.",
-  },
-  {
-    key: "responding",
-    icon: "audio-lines",
-    label: "Responding",
-    caption:
-      "Speaking back with lifelike voice, expression, and lip-sync — measured, warm, and on-brand.",
-  },
-];
-
 export type CustomizationOption = {
   icon: IconKey;
   title: string;
   description: string;
 };
 
+// The platform's core promise: every dimension of an AI human can be
+// configured. Order matches the brief exactly (appearance -> voice ->
+// personality -> environment -> language -> expression -> knowledge -> behavior).
 export const NASSER_CUSTOMIZATION: CustomizationOption[] = [
   {
     icon: "shirt",
-    title: "Appearance & Attire",
+    title: "Appearance & Clothing",
     description:
       "National dress, corporate, or bespoke wardrobe — matched to your brand and setting.",
   },
   {
-    icon: "languages",
-    title: "Language & Dialect",
-    description:
-      "Emirati and Gulf Arabic, English, and multilingual delivery for global audiences.",
-  },
-  {
     icon: "audio-lines",
-    title: "Voice & Tone",
+    title: "Voice & Accent",
     description:
       "Tune pace, warmth, and authority — from ceremonial and official to conversational.",
   },
   {
     icon: "smile",
-    title: "Personality",
+    title: "Personality & Tone",
     description:
       "Shape character and demeanor so every interaction feels intentional and human.",
   },
   {
+    icon: "image",
+    title: "Background & Environment",
+    description:
+      "Any real-time backdrop — from a majlis to a museum hall to a branded studio.",
+  },
+  {
+    icon: "languages",
+    title: "Arabic & English Support",
+    description:
+      "Fluent bilingual delivery, with Gulf Arabic dialect precision for regional audiences.",
+  },
+  {
+    icon: "waveform",
+    title: "Lip Sync & Facial Expressions",
+    description:
+      "Natural mouth movement and micro-expressions synced to every word, in real time.",
+  },
+  {
     icon: "database",
-    title: "Knowledge Domain",
+    title: "Knowledge Base",
     description:
       "Grounded in your documents, policies, and institutional knowledge via SABR.",
   },
   {
-    icon: "image",
-    title: "Environment & Scene",
+    icon: "compass",
+    title: "Behavior & Response Style",
     description:
-      "Place him in any real-time Unreal Engine backdrop — from majlis to museum hall.",
+      "Configure how direct, formal, or exploratory each answer feels — tuned to your audience.",
+  },
+];
+
+export type DeploymentOption = {
+  id: string;
+  icon: IconKey;
+  title: string;
+  description: string;
+  /** Larger bento tile for emphasis in DeployAnywhere. */
+  featured?: boolean;
+};
+
+// Physical and digital surfaces an AI human can be deployed to. Order and
+// `featured` flags drive the bento layout in components/home/DeployAnywhere.tsx —
+// Holograms, Museums, and Exhibitions get emphasis per the brief, to make clear
+// these AI humans live in physical spaces, not just on screens.
+export const DEPLOYMENT_OPTIONS: DeploymentOption[] = [
+  {
+    id: "holograms",
+    icon: "orbit",
+    title: "Holograms",
+    description: "Freestanding holographic presenters for flagship spaces.",
+    featured: true,
+  },
+  {
+    id: "museums",
+    icon: "palette",
+    title: "Museums",
+    description: "Guided storytelling woven into permanent exhibits.",
+    featured: true,
+  },
+  {
+    id: "exhibitions",
+    icon: "presentation",
+    title: "Exhibitions",
+    description: "Interactive presenters for events, expos, and conferences.",
+    featured: true,
+  },
+  {
+    id: "websites",
+    icon: "globe",
+    title: "Websites",
+    description: "Embedded directly into your web experience.",
+  },
+  {
+    id: "mobile-apps",
+    icon: "smartphone",
+    title: "Mobile Apps",
+    description: "Native iOS and Android integration.",
+  },
+  {
+    id: "kiosks",
+    icon: "monitor",
+    title: "Kiosks",
+    description: "Self-service stations in lobbies and public spaces.",
+  },
+  {
+    id: "touch-screens",
+    icon: "hand",
+    title: "Touch Screens",
+    description: "Interactive displays for hands-on engagement.",
+  },
+  {
+    id: "led-walls",
+    icon: "tv",
+    title: "LED Walls",
+    description: "Large-format displays for immersive public installations.",
   },
 ];
 
