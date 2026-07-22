@@ -55,13 +55,15 @@ export default function DeployAnywhere() {
               )} ${opt.featured ? "lg:p-8" : ""}`}
             >
               {/* Background line-art illustration — secondary to the text,
-                  low-contrast monochrome, instantly reads the scenario. */}
+                  but bumped up from the original pass so each scenario reads
+                  at a glance instead of needing a close look. Orange stays
+                  deliberately more restrained than the mist tint. */}
               <DeploymentArt
                 id={opt.id}
-                className={`pointer-events-none absolute bottom-0 right-0 transition-opacity duration-300 group-hover:opacity-[0.16] ${
+                className={`pointer-events-none absolute bottom-0 right-0 transition-opacity duration-300 ${
                   opt.featured
-                    ? "h-40 w-40 text-accent/[0.09] lg:h-52 lg:w-52"
-                    : "h-28 w-28 text-mist/[0.09]"
+                    ? "h-40 w-40 text-accent/[0.16] group-hover:opacity-[0.24] lg:h-52 lg:w-52"
+                    : "h-28 w-28 text-mist/[0.2] group-hover:opacity-[0.3]"
                 }`}
               />
 

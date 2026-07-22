@@ -14,7 +14,7 @@ type ArtProps = { className?: string };
 const commonStroke = {
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 3,
+  strokeWidth: 3.5,
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
 };
