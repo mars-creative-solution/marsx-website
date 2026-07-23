@@ -377,9 +377,9 @@ export const NASSER_CUSTOMIZATION: CustomizationOption[] = [
   },
   {
     icon: "languages",
-    title: "Arabic & English Support",
+    title: "Multilingual Support",
     description:
-      "Fluent bilingual delivery, with Gulf Arabic dialect precision for regional audiences.",
+      "Speak any language, accent, or dialect — customized for your audience and region.",
   },
   {
     icon: "waveform",
