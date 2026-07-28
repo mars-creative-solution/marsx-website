@@ -318,6 +318,11 @@ export const AMBASSADORS: Ambassador[] = [
     media: NASSER.media,
   },
   {
+    id: "fatima",
+    name: "Fatima",
+    media: { available: true, image: "/fatima.png" },
+  },
+  {
     id: "julia",
     name: "Julia",
     media: { available: true, image: "/julia.png" },
