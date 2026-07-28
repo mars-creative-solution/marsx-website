@@ -47,20 +47,21 @@ export default function AmbassadorsShowcase() {
           initial="hidden"
           whileInView="show"
           viewport={inView}
-          className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-8"
+          className="mt-16 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 lg:gap-6"
         >
           {AMBASSADORS.map((a) => (
             <motion.div
               key={a.id}
               variants={staggerItem}
-              className="flex flex-col items-center"
+              className="group flex flex-col items-center rounded-3xl border border-mist/10 bg-mist/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:bg-mist/[0.05] hover:shadow-[0_0_50px_-12px_rgba(255,90,0,0.35)] sm:p-6"
             >
               <NasserFigure
                 hologram
                 media={a.media}
                 name={a.name}
                 role=""
-                className="aspect-[3/4] w-full max-w-xs"
+                className="aspect-[3/4] w-full"
+                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 20vw"
               />
               <span className="mt-5 font-display text-sm font-semibold tracking-[0.3em] text-mist/85">
                 {a.name.toUpperCase()}

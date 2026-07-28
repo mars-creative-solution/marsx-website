@@ -17,6 +17,8 @@ type NasserFigureProps = {
   /** Extra classes for the outer container (sizing). */
   className?: string;
   priority?: boolean;
+  /** `sizes` for the underlying next/image `fill` — match the actual rendered width. */
+  sizes?: string;
 };
 
 // Feathers all four edges a few percent into transparency, dissolving any hard
@@ -46,6 +48,7 @@ export default function NasserFigure({
   role = NASSER.role,
   className = "",
   priority = false,
+  sizes = "(max-width: 1024px) 90vw, 45vw",
 }: NasserFigureProps) {
   const [videoFailed, setVideoFailed] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
@@ -87,7 +90,7 @@ export default function NasserFigure({
           alt={role ? `${name} — ${role}` : name}
           fill
           priority={priority}
-          sizes="(max-width: 1024px) 90vw, 45vw"
+          sizes={sizes}
           style={maskStyle}
           className={mediaClass}
           onError={() => setImageFailed(true)}
