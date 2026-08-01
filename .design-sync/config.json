@@ -1,0 +1,21 @@
+{
+  "projectId": "5c3da91c-007c-4e49-833b-8f9bcd732cd0",
+  "shape": "package",
+  "pkg": "marsx",
+  "globalName": "MarsX",
+  "tsconfig": "tsconfig.json",
+  "srcDir": "components",
+  "buildCmd": "npm run build && node .design-sync/copy-css.mjs",
+  "cssEntry": ".design-sync/.cache/compiled.css",
+  "readmeHeader": ".design-sync/conventions.md",
+  "extraEntries": ["./.design-sync/process-shim.mjs"],
+  "overrides": {
+    "IndustriesGrid": { "cardMode": "column" },
+    "NasserStage": { "cardMode": "column" },
+    "OrbitRings": { "cardMode": "column" },
+    "ParticleField": { "cardMode": "column" }
+  },
+  "libOverrides": {
+    "source-kit.mjs": "components/_backup (dead code, already excluded from tsconfig) and components/preview (unapproved, unintegrated avatar-showcase/living-portrait experiments) sit inside the components/ scan root and share several component names with live components (Hero, Footer, Nav, OrbitLogo) — excluded both directories from src scanning. Also excludes Button/Nav/Footer/Hero/NasserHero, which import next/link or next/navigation and crash the synthesized entry outside a real Next.js app."
+  }
+}
