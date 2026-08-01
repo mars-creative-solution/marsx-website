@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { UserPlus } from "lucide-react";
 import { fadeUp, inView, stagger, staggerItem } from "@/lib/motion";
 import { AMBASSADORS } from "@/lib/content";
 import NasserFigure from "./NasserFigure";
@@ -47,7 +49,7 @@ export default function AmbassadorsShowcase() {
           initial="hidden"
           whileInView="show"
           viewport={inView}
-          className="mt-16 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 lg:gap-6"
+          className="mt-16 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-5 lg:gap-6"
         >
           {AMBASSADORS.map((a) => (
             <motion.div
@@ -68,6 +70,28 @@ export default function AmbassadorsShowcase() {
               </span>
             </motion.div>
           ))}
+
+          {/* "Your Custom Character" — the platform is fully customizable, so
+              the gallery ends with an open slot rather than a fixed lineup. */}
+          <motion.div variants={staggerItem}>
+            <Link
+              href="/contact"
+              className="group flex flex-col items-center rounded-3xl border border-dashed border-accent/30 bg-accent/[0.04] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:bg-accent/[0.08] hover:shadow-[0_0_50px_-12px_rgba(255,90,0,0.45)] sm:p-6"
+            >
+              <div className="relative flex aspect-[3/4] w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-b from-accent/25 via-accent/10 to-transparent">
+                <UserPlus size={40} strokeWidth={1.5} className="text-accent/80" />
+                <span className="text-xs font-semibold tracking-[0.3em] text-accent/70">
+                  YOU
+                </span>
+              </div>
+              <span className="mt-5 text-center font-display text-sm font-semibold tracking-[0.3em] text-mist/85">
+                YOUR CUSTOM CHARACTER
+              </span>
+              <span className="mt-2 text-center text-xs leading-relaxed text-mist/45">
+                Built for your organization.
+              </span>
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </section>

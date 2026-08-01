@@ -16,6 +16,11 @@ const eslintConfig = defineConfig([
     "components/_backup/**",
     // Node build-time tooling scripts (CommonJS), not app code.
     "scripts/**",
+    // design-sync (claude.ai/design) staged converter + generated bundle —
+    // not app code, gitignored, not meant to be linted as part of this site.
+    ".ds-sync/**",
+    "ds-bundle/**",
+    ".design-sync/**",
   ]),
 ]);
 
