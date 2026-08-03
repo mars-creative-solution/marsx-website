@@ -5,6 +5,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
+import CursorTrail from "@/components/CursorTrail";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d0d0d",
+  themeColor: "#181818",
   width: "device-width",
   initialScale: 1,
 };
@@ -86,6 +87,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </MotionProvider>
+        <CursorTrail />
         {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
       </body>
     </html>
