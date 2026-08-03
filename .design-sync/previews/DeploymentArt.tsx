@@ -1,6 +1,6 @@
 import { DeploymentArt } from "marsx";
 
-const ROW = { display: "flex", gap: 24, padding: 24, background: "#0d0d0d", color: "#ff5a00" };
+const ROW = { display: "flex", gap: 24, padding: 24, background: "#181818", color: "#ff5a00" };
 const TILE = { width: 64, height: 64 };
 
 export function Default() {

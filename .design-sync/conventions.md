@@ -8,7 +8,7 @@ This is the MarsX marketing site's real component set (Next.js + Tailwind v4), b
 
 | Class | Meaning |
 |---|---|
-| `bg-black`, `text-mist` | brand background (`#0d0d0d`) / primary text (`#f2f2f2`) |
+| `bg-black`, `text-mist` | brand background (`#181818`) / primary text (`#f2f2f2`) |
 | `text-accent`, `bg-accent`, `border-accent/*` | brand orange (`#ff5a00`), used sparingly as a single accent, not a primary palette color |
 | `text-charcoal`, `bg-charcoal/*` | secondary dark surface (`#2a2a2a`) |
 | `font-display` | headings (Exo 2) — `font-sans` is body text (Inter) |

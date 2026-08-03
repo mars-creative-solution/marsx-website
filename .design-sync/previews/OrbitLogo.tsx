@@ -1,6 +1,6 @@
 import { OrbitLogo } from "marsx";
 
-const ROW = { display: "flex", gap: 32, alignItems: "center", padding: 24, background: "#0d0d0d" };
+const ROW = { display: "flex", gap: 32, alignItems: "center", padding: 24, background: "#181818" };
 
 export function Default() {
   return (

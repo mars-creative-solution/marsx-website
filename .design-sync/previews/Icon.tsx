@@ -1,6 +1,6 @@
 import { Icon } from "marsx";
 
-const ROW = { display: "flex", gap: 24, alignItems: "center", padding: 24, background: "#0d0d0d" };
+const ROW = { display: "flex", gap: 24, alignItems: "center", padding: 24, background: "#181818" };
 const LABEL = { display: "flex", flexDirection: "column" as const, alignItems: "center", gap: 8, color: "#f2f2f2", fontSize: 11 };
 
 export function Default() {

@@ -6,7 +6,7 @@ import { Nameplate } from "marsx";
 export function Default() {
   return (
     <MotionConfig reducedMotion="always">
-      <div style={{ padding: 48, background: "#000" }}>
+      <div style={{ padding: 48, background: "#181818" }}>
         <Nameplate />
       </div>
     </MotionConfig>

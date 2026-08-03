@@ -6,7 +6,7 @@ import { HoloHud } from "marsx";
 export function Default() {
   return (
     <MotionConfig reducedMotion="always">
-      <div style={{ height: 420, position: "relative", background: "#000" }}>
+      <div style={{ height: 420, position: "relative", background: "#181818" }}>
         <HoloHud />
       </div>
     </MotionConfig>
