@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { UserPlus } from "lucide-react";
+import { ArrowRight, UserPlus } from "lucide-react";
 import { fadeUp, inView, stagger, staggerItem } from "@/lib/motion";
 import { AMBASSADORS } from "@/lib/content";
 import NasserFigure from "./NasserFigure";
@@ -89,6 +89,13 @@ export default function AmbassadorsShowcase() {
               </span>
               <span className="mt-2 text-center text-xs leading-relaxed text-mist/45">
                 Built for your organization.
+              </span>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-accent">
+                Book a Demo
+                <ArrowRight
+                  size={13}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </span>
             </Link>
           </motion.div>
