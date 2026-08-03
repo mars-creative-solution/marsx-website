@@ -5,7 +5,6 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
-import CursorTrail from "@/components/CursorTrail";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -87,7 +86,6 @@ export default function RootLayout({
           </main>
           <Footer />
         </MotionProvider>
-        <CursorTrail />
         {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
       </body>
     </html>
