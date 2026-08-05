@@ -320,12 +320,12 @@ export const AMBASSADORS: Ambassador[] = [
   {
     id: "fatima",
     name: "Fatima",
-    media: { available: true, image: "/fatima.png" },
+    media: { available: true, image: "/fatima.png", blendBlackBackground: true },
   },
   {
     id: "julia",
     name: "Julia",
-    media: { available: true, image: "/julia.png" },
+    media: { available: true, image: "/julia.png", blendBlackBackground: true },
   },
   {
     id: "jhonny",
