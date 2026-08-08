@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Phone, MapPin, Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { MapPin, Mail, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { EASE, fadeUp, inView } from "@/lib/motion";
 import { SITE } from "@/lib/content";
 import { INTEREST_OPTIONS, validateContact } from "@/lib/contact";
@@ -11,7 +11,6 @@ import OrbitLogo from "../OrbitLogo";
 const CONTACT_ITEMS = [
   { icon: MapPin, label: "Location", value: SITE.location, href: undefined },
   { icon: Mail, label: "Email", value: SITE.email, href: `mailto:${SITE.email}` },
-  { icon: Phone, label: "Phone", value: SITE.phone, href: SITE.phoneHref },
 ];
 
 type Status = "idle" | "sending" | "success" | "error";

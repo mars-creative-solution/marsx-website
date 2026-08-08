@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/content";
 
 export default function Footer() {
@@ -60,15 +60,6 @@ export default function Footer() {
                   >
                     <Mail size={15} className="shrink-0 text-accent" />
                     {SITE.email}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={SITE.phoneHref}
-                    className="-mx-2 flex items-center gap-2.5 rounded-lg px-2 py-2 transition-colors hover:bg-mist/5 hover:text-mist lg:mx-0 lg:px-0 lg:py-0"
-                  >
-                    <Phone size={15} className="shrink-0 text-accent" />
-                    {SITE.phone}
                   </a>
                 </li>
               </ul>
