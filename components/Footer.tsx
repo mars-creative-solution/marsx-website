@@ -1,10 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { MapPin, Mail } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/content";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+
+  // See Nav.tsx — standalone landing pages opt out of the site chrome.
+  if (pathname === "/nasser-demo") return null;
 
   return (
     <footer className="relative border-t border-mist/10 bg-black py-14">

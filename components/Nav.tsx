@@ -39,6 +39,11 @@ export default function Nav() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  // Standalone landing pages (e.g. a demo link shared outside the site) opt
+  // out of the site chrome entirely — no nav, no distraction from the page's
+  // one purpose.
+  if (pathname === "/nasser-demo") return null;
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
