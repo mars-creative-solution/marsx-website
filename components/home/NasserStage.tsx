@@ -5,6 +5,7 @@ import ParticleField from "./ParticleField";
 import HoloHud from "./HoloHud";
 import Nameplate from "./Nameplate";
 import NasserFigure from "./NasserFigure";
+import type { NasserMedia } from "@/lib/content";
 
 type NasserStageProps = {
   /** Sizing classes for the stage (e.g. aspect / height). */
@@ -18,6 +19,8 @@ type NasserStageProps = {
   nameplate?: boolean;
   /** Max particle count (scaled down on small screens inside ParticleField). */
   particleCount?: number;
+  /** Override the default Nasser media (defaults to NASSER.media via NasserFigure). */
+  media?: NasserMedia;
 };
 
 /**
@@ -35,6 +38,7 @@ export default function NasserStage({
   orbit = true,
   nameplate = false,
   particleCount = 34,
+  media,
 }: NasserStageProps) {
   return (
     <div className={`relative ${className}`}>
@@ -54,6 +58,7 @@ export default function NasserStage({
         hologram
         glow={false}
         priority={priority}
+        media={media}
         className="relative h-full w-full"
       />
 
