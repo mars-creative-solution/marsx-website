@@ -3,9 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, UserPlus } from "lucide-react";
-import { fadeUp, inView, stagger, staggerItem } from "@/lib/motion";
-import { AMBASSADORS } from "@/lib/content";
-import NasserFigure from "./NasserFigure";
+import { fadeUp, inView, staggerItem } from "@/lib/motion";
 
 /**
  * "Meet the Ambassadors" — a premium, scalable gallery proving MarsX is a
@@ -43,37 +41,15 @@ export default function AmbassadorsShowcase() {
           </p>
         </motion.div>
 
-        {/* Avatar gallery — portrait + name only; no per-card subtitle */}
+        {/* "Your Custom Character" — the platform is fully customizable, so
+            the gallery is a single open slot rather than a fixed lineup. */}
         <motion.div
-          variants={stagger}
           initial="hidden"
           whileInView="show"
           viewport={inView}
-          className="mt-16 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-5 lg:gap-6"
+          className="mt-16 flex justify-center"
         >
-          {AMBASSADORS.map((a) => (
-            <motion.div
-              key={a.id}
-              variants={staggerItem}
-              className="group flex flex-col items-center rounded-3xl border border-mist/10 bg-mist/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:bg-mist/[0.05] hover:shadow-[0_0_50px_-12px_rgba(255,90,0,0.35)] sm:p-6"
-            >
-              <NasserFigure
-                hologram
-                media={a.media}
-                name={a.name}
-                role=""
-                className="aspect-[3/4] w-full"
-                sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 20vw"
-              />
-              <span className="mt-5 font-display text-sm font-semibold tracking-[0.3em] text-mist/85">
-                {a.name.toUpperCase()}
-              </span>
-            </motion.div>
-          ))}
-
-          {/* "Your Custom Character" — the platform is fully customizable, so
-              the gallery ends with an open slot rather than a fixed lineup. */}
-          <motion.div variants={staggerItem}>
+          <motion.div variants={staggerItem} className="w-full max-w-xs">
             <Link
               href="/contact"
               className="group flex flex-col items-center rounded-3xl border border-dashed border-accent/30 bg-accent/[0.04] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:bg-accent/[0.08] hover:shadow-[0_0_50px_-12px_rgba(255,90,0,0.45)] sm:p-6"
