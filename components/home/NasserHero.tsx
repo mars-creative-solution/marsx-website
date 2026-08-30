@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { EASE } from "@/lib/motion";
 import OrbitLogo from "../OrbitLogo";
-import NasserStage from "./NasserStage";
+import DeviceShowcase from "./DeviceShowcase";
 
 export default function NasserHero() {
   return (
@@ -25,10 +25,8 @@ export default function NasserHero() {
           transition={{ duration: 0.9, ease: EASE }}
           className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:max-w-none"
         >
-          <NasserStage
+          <DeviceShowcase
             priority
-            nameplate
-            media={{ available: true, image: "/nasser-holotube.png" }}
             className="aspect-[4/5] w-full lg:aspect-auto lg:h-[84vh]"
           />
         </motion.div>
