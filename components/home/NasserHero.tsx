@@ -28,7 +28,7 @@ export default function NasserHero() {
           <NasserStage
             priority
             nameplate
-            media={{ available: true, image: "/nasser-new-preview.png" }}
+            media={{ available: true, image: "/nasser-holotube.png" }}
             className="aspect-[4/5] w-full lg:aspect-auto lg:h-[74vh]"
           />
         </motion.div>
