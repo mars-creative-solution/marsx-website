@@ -10,9 +10,9 @@ import { EASE } from "@/lib/motion";
 // treatment (masks, glow filters, orbit rings). Cycles through the physical
 // experiences MarsX deploys to, one at a time.
 const DEVICES = [
-  { id: "holotube", label: "HOLOTUBE", image: "/device-holotube-v2.png" },
-  { id: "holobox", label: "HOLOBOX", image: "/device-holobox-v2.png" },
-  { id: "screen", label: "SCREEN", image: "/device-screen-v2.png" },
+  { id: "holotube", label: "HOLOTUBE", image: "/device-holotube-v3.png" },
+  { id: "holobox", label: "HOLOBOX", image: "/device-holobox-v3.png" },
+  { id: "screen", label: "SCREEN", image: "/device-screen-v3.png" },
   { id: "kiosk", label: "KIOSK", image: "/device-kiosk-v2.png" },
 ] as const;
 
