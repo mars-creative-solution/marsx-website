@@ -18,11 +18,11 @@ export default function Nameplate({ className = "" }: { className?: string }) {
       transition={{ duration: 0.8, delay: 0.6, ease: EASE }}
       className={`flex flex-col items-center gap-2 text-center ${className}`}
     >
-      <span className="font-display text-sm font-semibold tracking-[0.35em] text-mist/85">
+      <span className="font-display text-base font-semibold tracking-[0.35em] text-mist [text-shadow:0_1px_12px_rgba(0,0,0,0.8)]">
         {NASSER.name.toUpperCase()}
       </span>
-      <span className="h-px w-10 bg-accent/50" />
-      <span className="text-[0.6rem] font-medium uppercase tracking-[0.3em] text-mist/45">
+      <span className="h-px w-10 bg-accent/70" />
+      <span className="text-xs font-medium uppercase tracking-[0.3em] text-mist/65 [text-shadow:0_1px_10px_rgba(0,0,0,0.8)]">
         {NASSER.role}
       </span>
     </motion.div>

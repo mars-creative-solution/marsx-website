@@ -23,13 +23,13 @@ export default function NasserHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, ease: EASE }}
-          className="order-1 mx-auto w-full max-w-md lg:order-2 lg:max-w-none"
+          className="order-1 mx-auto w-full max-w-lg lg:order-2 lg:max-w-none"
         >
           <NasserStage
             priority
             nameplate
             media={{ available: true, image: "/nasser-holotube.png" }}
-            className="aspect-[4/5] w-full lg:aspect-auto lg:h-[74vh]"
+            className="aspect-[4/5] w-full lg:aspect-auto lg:h-[84vh]"
           />
         </motion.div>
 
